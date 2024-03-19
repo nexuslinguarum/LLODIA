@@ -1,0 +1,1669 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:llodia="https://github.com/nexuslinguarum/llodia/"
+    xml:base="https://github.com/nexuslinguarum/llodia/"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:foaf="http://xmlns.com/foaf/spec/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:dcmitype="http://purl.org/dc/dcmitype/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:ontolex="http://www.w3.org/ns/lemon/ontolex#"
+    xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"
+    xmlns:lexicog="http://www.w3.org/ns/lemon/lexicog#"
+    xmlns:frac="http://www.w3.org/ns/lemon/frac#"
+    xmlns:cito="http://purl.org/spar/cito#"
+    xmlns:void="http://rdfs.org/ns/void#"
+    xmlns:time="http://www.w3.org/2006/time#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:vartrans="http://www.w3.org/ns/lemon/vartrans#"
+    xmlns:lemonEty="http://lari-datasets.ilc.cnr.it/lemonEty#"
+    xmlns:dbo="http://dbpedia.org/ontology/">
+    
+    <owl:Ontology rdf:about="https://github.com/nexuslinguarum/llodia">
+        <cc:license rdf:resource="https://www.gnu.org/licenses/agpl-3.0.html"/>
+        <dc:creator rdf:ID="far"><foaf:Person><foaf:name>Florentina Armaselu</foaf:name><foaf:workInfoHomepage rdf:resource="https://orcid.org/0000-0003-2386-6889"/></foaf:Person></dc:creator>
+        <dc:contributor rdf:ID="cli"><foaf:Person><foaf:name>Chaya Liebeskind</foaf:name><foaf:workInfoHomepage rdf:resource="https://orcid.org/0000-0003-0476-3796"/></foaf:Person></dc:contributor>
+        <dc:contributor rdf:ID="cot"><foaf:Person><foaf:name>Ciprian-Octavian Truică</foaf:name><foaf:workInfoHomepage rdf:resource="https://orcid.org/0000-0001-7292-4462"/></foaf:Person></dc:contributor>
+        <dc:contributor rdf:ID="gvo"><foaf:Person><foaf:name>Giedrė Valūnaitė Oleškevičienė</foaf:name><foaf:workInfoHomepage rdf:resource="https://orcid.org/0000-0001-5688-2469"/></foaf:Person></dc:contributor>
+        <dc:contributor rdf:ID="pma"><foaf:Person><foaf:name>Paola Marongiu</foaf:name><foaf:workInfoHomepage rdf:resource="https://orcid.org/0000-0002-5060-3307"/></foaf:Person></dc:contributor>
+        <dc:contributor rdf:ID="bmc"><foaf:Person><foaf:name>Barbara McGillivray</foaf:name><foaf:workInfoHomepage rdf:resource="https://orcid.org/0000-0003-3426-8200"/></foaf:Person></dc:contributor>
+	<dc:contributor rdf:ID="esa"><foaf:Person><foaf:name>Elena Simona Apostol</foaf:name><foaf:workInfoHomepage rdf:resource="https://orcid.org/0000-0001-6397-4951"/></foaf:Person></dc:contributor>
+        <rdfs:comment xml:lang="eng">Contribution: F.A. created the ontology, the examples for French and contributed to the harmonisation of the examples for all languages; C.L. contributed the examples for Hebrew; G.V.O. contributed the examples for Lithuanian; C.O.T. and E.S.A. contributed the examples for Romanian; P.M and B.McG. contributed the examples for Latin.</rdfs:comment>
+        <dc:description xml:lang="en">A humanities use case that models lexico-semantic data extracted from diachronic corpora and dictionaries as Linguistic Linked Open Data (LLOD).</dc:description>
+        <dc:title xml:lang="en">LLOD Modelling in Diachronic Analysis</dc:title>
+    </owl:Ontology>
+    
+    
+    <!-- Classes -->
+    <owl:Class rdf:about="https://github.com/nexuslinguarum/llodia/LexicalChronicle">
+        <rdfs:subClassOf rdf:resource="http://rdfs.org/ns/void#Dataset"/>
+        <dc:description>A collection of lexical diachronic records.</dc:description>    
+    </owl:Class>
+    
+    <owl:Class rdf:about="https://github.com/nexuslinguarum/llodia/LexicalRecord">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/lemon/frac#Observable"/>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/nexuslinguarum/llodia"/>
+        <dc:description>A record about a form, which includes temporal information indicating when a certain linguistic event about the form was observed.</dc:description>
+    </owl:Class>
+    
+    <owl:Class rdf:about="https://github.com/nexuslinguarum/llodia/Dictionary">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/lemon/lexicog#LexicographicResource"/>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/nexuslinguarum/llodia"/>
+        <dc:description>A lexicographic resource that can be used as a reference about word forms, meanings, usage, etc.</dc:description>    
+    </owl:Class>
+    
+    <owl:Class rdf:about="https://github.com/nexuslinguarum/llodia/Corpus">
+        <rdfs:subClassOf rdf:resource="http://purl.org/dc/dcmitype/Collection"/>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/nexuslinguarum/llodia"/>
+        <dc:description>A collection of documents that covers a certain topic and period of time.</dc:description>    
+    </owl:Class>
+    
+    <owl:Class rdf:about="https://github.com/nexuslinguarum/llodia/TimeInterval">
+        <rdfs:subClassOf rdf:resource="http://purl.org/dc/terms/Period"/>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/nexuslinguarum/llodia"/>
+        <dc:description>A class that defines a time interval. It may also be an open interval or include non-numeric encoding referring, for instance, to a named era.</dc:description>
+        <owl:DatatypeProperty rdf:resource="dct:start"/>
+        <owl:DatatypeProperty rdf:resource="dct:end"/>
+    </owl:Class>
+    
+    
+    <!-- Properties -->
+    <!-- DatatypeProperty -->
+    <owl:DatatypeProperty rdf:about="https://github.com/nexuslinguarum/llodia/publicationDate">
+        <rdfs:subPropertyOf rdf:resource="dct:date"/>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/nexuslinguarum/llodia"/>
+        <dc:description>A property that relates a publication date with a corpus or dictionary.</dc:description>
+    </owl:DatatypeProperty>
+    
+    <!-- ObjectProperty -->
+    <owl:ObjectProperty rdf:about="https://github.com/nexuslinguarum/llodia/timeSpan">
+        <rdfs:subPropertyOf rdf:resource="dct:coverage"/>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/nexuslinguarum/llodia"/>
+        <dc:description>A property that defines the time span of a resource.</dc:description>
+        <rdfs:range rdf:resource="https://github.com/nexuslinguarum/llodia/TimeInterval"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="https://github.com/nexuslinguarum/llodia/timeSlice">
+        <rdfs:subPropertyOf rdf:resource="dct:coverage"/>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/nexuslinguarum/llodia"/>
+        <dc:description>A property that relates a record with the time slice in which a specific linguistic event was observed.</dc:description>
+        <rdfs:domain rdf:resource="https://github.com/nexuslinguarum/llodia/LexicalRecord"/>
+        <rdfs:range rdf:resource="https://github.com/nexuslinguarum/llodia/TimeInterval"/>
+        <owl:inverseOf rdf:resource="https://github.com/nexuslinguarum/llodia/isTimeSliceOf"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="https://github.com/nexuslinguarum/llodia/isTimeSliceOf">
+        <rdfs:subPropertyOf rdf:resource="dct:coverage"/>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/nexuslinguarum/llodia"/>
+        <dc:description>A property that relates a time slice when a specific linguistic event was observed with a record.</dc:description>
+        <rdfs:domain rdf:resource="https://github.com/nexuslinguarum/llodia/TimeInterval"/>
+        <rdfs:range rdf:resource="https://github.com/nexuslinguarum/llodia/LexicalRecord"/>
+        <owl:inverseOf rdf:resource="https://github.com/nexuslinguarum/llodia/timeSlice"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="https://github.com/nexuslinguarum/llodia/record">
+        <rdfs:isDefinedBy rdf:resource="https://github.com/nexuslinguarum/llodia"/>
+        <dc:description>A property that relates a lexical chronicle to a lexical record.</dc:description>
+        <rdfs:domain rdf:resource="https://github.com/nexuslinguarum/llodia/LexicalChronicle"/>
+        <rdfs:range rdf:resource="https://github.com/nexuslinguarum/llodia/LexicalRecord"/>
+        <owl:inverseOf rdf:resource="https://github.com/nexuslinguarum/llodia/isRecordOf"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="https://github.com/nexuslinguarum/llodia/isRecordOf">
+        <rdfs:isDefinedBy rdf:resource="https://github.com/nexuslinguarum/llodia"/>
+        <dc:description>A property that relates a lexical record to a lexical chronicle.</dc:description>
+        <rdfs:domain rdf:resource="https://github.com/nexuslinguarum/llodia/LexicalRecord"/>
+        <rdfs:range rdf:resource="https://github.com/nexuslinguarum/llodia/LexicalChronicle"/>
+        <owl:inverseOf rdf:resource="https://github.com/nexuslinguarum/llodia/record"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="https://github.com/nexuslinguarum/llodia/form">
+        <rdfs:isDefinedBy rdf:resource="https://github.com/nexuslinguarum/llodia"/>
+        <dc:description>A property that relates a lexical record to a form.</dc:description>
+        <rdfs:domain rdf:resource="https://github.com/nexuslinguarum/llodia/LexicalRecord"/>
+        <rdfs:range rdf:resource="http://www.w3.org/ns/lemon/ontolex#Form"/>
+        <owl:inverseOf rdf:resource="https://github.com/nexuslinguarum/llodia/isFormOf"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="https://github.com/nexuslinguarum/llodia/isFormOf">
+        <rdfs:isDefinedBy rdf:resource="https://github.com/nexuslinguarum/llodia"/>
+        <dc:description>A property that relates a form to a lexical record.</dc:description>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/lemon/ontolex#Form"/>
+        <rdfs:range rdf:resource="https://github.com/nexuslinguarum/llodia/LexicalRecord"/>
+        <owl:inverseOf rdf:resource="https://github.com/nexuslinguarum/llodia/form"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="https://github.com/nexuslinguarum/llodia/similarity">
+        <rdfs:isDefinedBy rdf:resource="https://github.com/nexuslinguarum/llodia"/>
+        <dc:description>A property that relates the characteristics of a similarity-based observation with a container of observed items, such as a list of neighbours.</dc:description>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/lemon/frac#Observation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Container"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="https://github.com/nexuslinguarum/llodia/lexicalConcept">
+        <rdfs:isDefinedBy rdf:resource="https://github.com/nexuslinguarum/llodia"/>
+        <dc:description>A property that relates a lexical record with a lexical concept.</dc:description>
+        <rdfs:domain rdf:resource="https://github.com/nexuslinguarum/llodia/LexicalRecord"/>
+        <rdfs:range rdf:resource="http://www.w3.org/ns/lemon/ontolex#LexicalConcept"/>
+        <owl:inverseOf rdf:resource="https://github.com/nexuslinguarum/llodia/isLexicalConceptOf"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="https://github.com/nexuslinguarum/llodia/isLexicalConceptOf">
+        <rdfs:isDefinedBy rdf:resource="https://github.com/nexuslinguarum/llodia"/>
+        <dc:description>A property that relates a lexical concept with a lexical record.</dc:description>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/lemon/ontolex#LexicalConcept"/>
+        <rdfs:range rdf:resource="https://github.com/nexuslinguarum/llodia/LexicalRecord"/>
+        <owl:inverseOf rdf:resource="https://github.com/nexuslinguarum/llodia/lexicalConcept"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="https://github.com/nexuslinguarum/llodia/translationSet">
+        <rdfs:isDefinedBy rdf:resource="https://github.com/nexuslinguarum/llodia"/>
+        <dc:description>A property that relates a form or a lexical sense with a target translation set.</dc:description>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/ns/lemon/ontolex#Form"/>
+                    <rdf:Description rdf:about="http://www.w3.org/ns/lemon/ontolex#LexicalSense"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/ns/lemon/vartrans#TranslationSet"/>
+        <owl:inverseOf rdf:resource="https://github.com/nexuslinguarum/llodia/isTranslationSetOf"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="https://github.com/nexuslinguarum/llodia/isTranslationSetOf">
+        <rdfs:isDefinedBy rdf:resource="https://github.com/nexuslinguarum/llodia"/>
+        <dc:description>A property that relates a translation set with a form or a lexical sense.</dc:description>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/lemon/vartrans#TranslationSet"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/ns/lemon/ontolex#Form"/>
+                    <rdf:Description rdf:about="http://www.w3.org/ns/lemon/ontolex#LexicalSense"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+        <owl:inverseOf rdf:resource="https://github.com/nexuslinguarum/llodia/translationSetOf"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="https://github.com/nexuslinguarum/llodia/etymon">
+        <rdfs:isDefinedBy rdf:resource="https://github.com/nexuslinguarum/llodia"/>
+        <dc:description>A property that relates an etymon form or a lexical sense with an etymology.</dc:description>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/ns/lemon/ontolex#Form"/>
+                    <rdf:Description rdf:about="http://www.w3.org/ns/lemon/ontolex#LexicalSense"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://lari-datasets.ilc.cnr.it/lemonEty#Etymology"/>
+        <owl:inverseOf rdf:resource="https://github.com/nexuslinguarum/llodia/isEtymonOf"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="https://github.com/nexuslinguarum/llodia/isEtymonOf">
+        <rdfs:isDefinedBy rdf:resource="https://github.com/nexuslinguarum/llodia"/>
+        <dc:description>A property that relates an etymology with an etymon form or lexical sense.</dc:description>
+        <rdfs:domain rdf:resource="http://lari-datasets.ilc.cnr.it/lemonEty#Etymology"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/ns/lemon/ontolex#Form"/>
+                    <rdf:Description rdf:about="http://www.w3.org/ns/lemon/ontolex#LexicalSense"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+        <owl:inverseOf rdf:resource="https://github.com/nexuslinguarum/llodia/etymon"/>
+    </owl:ObjectProperty>
+    
+    <!-- Lexical chronicle -->
+    <llodia:LexicalChronicle rdf:about="lc_nexus">
+        <dct:title>Nexus Lexical Chronicle</dct:title>
+        <dc:description>An example using the LLODIA model.</dc:description>
+        <dct:language rdf:resource="http://lexvo.org/id/iso639-3/mul"/>
+        <llodia:record rdf:resource="r_révolution_1"/>
+        <llodia:record rdf:resource="r_révolution_2"/>
+        <llodia:record rdf:resource="r_révolution_3"/>
+        <llodia:record rdf:resource="r_révolution_4"/>
+        <llodia:record rdf:resource="r_mahapehá_1"/>
+        <llodia:record rdf:resource="r_mahapehá_3"/>
+        <llodia:record rdf:resource="r_mahapehá_4"/>
+        <llodia:record rdf:resource="r_revolutio_1"/>
+        <llodia:record rdf:resource="r_revolutio_2"/>
+    </llodia:LexicalChronicle>
+    
+    <!-- French -->
+    
+    <!-- Time intervals -->
+    <llodia:TimeInterval rdf:about="ti_1690-1918">
+        <dct:start>1690-01-01</dct:start>
+        <dct:end>1918-12-31</dct:end>
+    </llodia:TimeInterval>
+    
+    <llodia:TimeInterval rdf:about="ti_1690-1794">
+        <dct:start>1690-01-01</dct:start>
+        <dct:end>1794-12-31</dct:end>
+    </llodia:TimeInterval>
+    
+    <llodia:TimeInterval rdf:about="ti_1831-1866">
+        <dct:start>1831-01-01</dct:start>
+        <dct:end>1866-12-31</dct:end>
+    </llodia:TimeInterval>
+    
+    <llodia:TimeInterval rdf:about="ti_1867-1889">
+        <dct:start>1867-01-01</dct:start>
+        <dct:end>1889-12-31</dct:end>
+    </llodia:TimeInterval>
+    
+    <llodia:TimeInterval rdf:about="ti_1890-1918">
+        <dct:start>1890-01-01</dct:start>
+        <dct:end>1918-12-31</dct:end>
+    </llodia:TimeInterval>
+    
+    <!-- Resources -->
+    <!-- Dictionary 1: Portail lexical CNRTL -->
+    <llodia:Dictionary rdf:about="d_plex_fra">
+        <dct:title>Portail lexical CNRTL</dct:title>
+        <dct:language rdf:resource="http://lexvo.org/id/iso639-3/fra"/>
+        <dct:publisher>Laboratoire Analyse et Traitement Informatique de la Langue Française (ATILF)</dct:publisher>
+        <llodia:publicationDate>2005</llodia:publicationDate>
+        <dbo:country rdf:resource="http://dbpedia.org/resource/France"/>
+        <dct:source rdf:resource="https://www.cnrtl.fr/portail/"/>
+    </llodia:Dictionary>
+    
+    <!-- Dictionary 2: Wiktionary -->
+    <llodia:Dictionary rdf:about="d_wict_mul">
+        <dct:title>Wiktionary</dct:title>
+        <dct:language rdf:resource="http://lexvo.org/id/iso639-3/mul"/>
+        <dct:publisher>Wikimedia Foundation</dct:publisher>
+        <llodia:publicationDate>2002</llodia:publicationDate>
+        <dct:source rdf:resource="https://www.wiktionary.org/"/>
+    </llodia:Dictionary>
+    
+    <!-- Corpus: BnL Open Data - MONOGRAPH TEXT PACK -->
+    <llodia:Corpus rdf:about="c_bnlm_fra">
+        <dct:title>BnL Open Data - MONOGRAPH TEXT PACK (125MB) (French selection)</dct:title>
+        <dct:language rdf:resource="http://lexvo.org/id/iso639-3/fra"/>
+        <dct:publisher>Bibliothèque nationale du Luxembourg (BnL)</dct:publisher>
+        <llodia:publicationDate>2020</llodia:publicationDate>
+        <dbo:country rdf:resource="http://dbpedia.org/resource/Luxembourg"/>
+        <dct:source rdf:resource="https://data.bnl.lu/data/historical-newspapers/"/>
+        <llodia:timeSpan rdf:resource="ti_1690-1918"/>       
+    </llodia:Corpus>
+    
+    <!-- Forms -->
+    <ontolex:Form rdf:about="f_révolution">
+        <rdf:value xml:lang="fra">révolution</rdf:value>
+        <llodia:translationSet rdf:resource="ts_révolution"/>
+        <lemonEty:etymology rdf:resource="e_révolution"/>
+    </ontolex:Form>
+    
+    <ontolex:Form rdf:about="f_revolution">
+        <rdf:value xml:lang="eng">revolution</rdf:value>
+    </ontolex:Form>
+    
+    <!-- Lexical records -->
+    <llodia:LexicalRecord rdf:about="r_révolution_1">
+        <llodia:form rdf:resource="f_révolution"/>
+        <llodia:timeSlice rdf:resource="ti_1690-1794"/>
+        <frac:frequency rdf:resource="freq_révolution_1"/>
+        <frac:embedding rdf:resource="fixedv_révolution_1"/>
+        <llodia:lexicalConcept rdf:resource="lc_révolution_1"/>
+    </llodia:LexicalRecord>
+    
+    <llodia:LexicalRecord rdf:about="r_révolution_2">
+        <llodia:form rdf:resource="f_révolution"/>
+        <llodia:timeSlice rdf:resource="ti_1831-1866"/>
+        <frac:frequency rdf:resource="freq_révolution_2"/>
+        <frac:embedding rdf:resource="fixedv_révolution_2"/>
+        <llodia:lexicalConcept rdf:resource="lc_révolution_2"/>
+    </llodia:LexicalRecord>
+    
+    <llodia:LexicalRecord rdf:about="r_révolution_3">
+        <llodia:form rdf:resource="f_révolution"/>
+        <llodia:timeSlice rdf:resource="ti_1867-1889"/>
+        <frac:frequency rdf:resource="freq_révolution_3"/>
+        <frac:embedding rdf:resource="fixedv_révolution_3"/>
+        <llodia:lexicalConcept rdf:resource="lc_révolution_3.1"/>
+        <llodia:lexicalConcept rdf:resource="lc_révolution_3.2"/>
+    </llodia:LexicalRecord>
+    
+    <llodia:LexicalRecord rdf:about="r_révolution_4">
+        <llodia:form rdf:resource="f_révolution"/>
+        <llodia:timeSlice rdf:resource="ti_1890-1918"/>
+        <frac:frequency rdf:resource="freq_révolution_4"/>
+        <frac:embedding rdf:resource="fixedv_révolution_4"/>
+        <llodia:lexicalConcept rdf:resource="lc_révolution_4"/>
+    </llodia:LexicalRecord>
+    
+    <!-- Lexical entries -->
+    <ontolex:LexicalEntry rdf:about="le_révolution">
+        <ontolex:canonicalForm>
+            <ontolex:Form rdf:about="f_révolution">
+                <ontolex:writtenRep xml:lang="fra">révolution</ontolex:writtenRep>
+            </ontolex:Form>
+        </ontolex:canonicalForm>
+        <lexinfo:partOfSpeech rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#noun"/>
+        <ontolex:sense rdf:resource="d_plex_fra_révolution_n_I.B.2"/>
+        <ontolex:sense rdf:resource="d_plex_fra_révolution_n_I.B.1"/>
+        <ontolex:sense rdf:resource="d_plex_fra_révolution_n_II.A.1"/>
+        <ontolex:sense rdf:resource="d_plex_fra_révolution_n_II.B.2"/>
+        <ontolex:sense rdf:resource="d_plex_fra_révolution_n_II.B.3"/>
+    </ontolex:LexicalEntry>
+    
+    <!-- Lexical senses -->
+    <ontolex:LexicalSense rdf:about="d_plex_fra_révolution_n_I.B.2">
+        <ontolex:reference rdf:resource="d_plex_fra"/>
+        <rdfs:comment xml:lang="eng">Circular motion of a body around its axis.</rdfs:comment>
+        <dct:subject rdf:resource="https://dbpedia.org/page/Category:Mechanics"/>
+        <dct:source rdf:resource="https://www.cnrtl.fr/definition/r%C3%A9volution"/>
+        <frac:attestation rdf:resource="da_révolution_1"/>
+    </ontolex:LexicalSense>
+    
+    <ontolex:LexicalSense rdf:about="d_plex_fra_révolution_n_I.B.1">
+        <ontolex:reference rdf:resource="d_plex_fra"/>
+        <rdfs:comment xml:lang="eng">Motion of a geometric form around an axis.</rdfs:comment>
+        <dct:subject rdf:resource="https://dbpedia.org/page/Category:Geometry"/>
+        <dct:source rdf:resource="https://www.cnrtl.fr/definition/r%C3%A9volution"/>
+        <frac:attestation rdf:resource="da_révolution_2"/>
+    </ontolex:LexicalSense>
+    
+    <ontolex:LexicalSense rdf:about="d_plex_fra_révolution_n_II.A.1">
+        <ontolex:reference rdf:resource="d_plex_fra"/>
+        <rdfs:comment xml:lang="eng">Natural phenomena changing the physical characteristics of the Earth.</rdfs:comment>
+        <dct:subject rdf:resource="https://dbpedia.org/page/Category:Geophysics"/>
+        <dct:source rdf:resource="https://www.cnrtl.fr/definition/r%C3%A9volution"/>
+        <frac:attestation rdf:resource="da_révolution_3.1"/>
+    </ontolex:LexicalSense>
+    
+    <ontolex:LexicalSense rdf:about="d_plex_fra_révolution_n_II.B.2">
+        <ontolex:reference rdf:resource="d_plex_fra"/>
+        <rdfs:comment xml:lang="eng">Sudden overthrow of the political regime of a nation.</rdfs:comment>
+        <dct:subject rdf:resource="https://dbpedia.org/page/Category:Politics"/>
+        <dct:source rdf:resource="https://www.cnrtl.fr/definition/r%C3%A9volution"/>
+        <frac:attestation rdf:resource="da_révolution_3.2"/>
+    </ontolex:LexicalSense>
+    
+    <ontolex:LexicalSense rdf:about="d_plex_fra_révolution_n_II.B.3">
+        <ontolex:reference rdf:resource="d_plex_fra"/>
+        <rdfs:comment xml:lang="eng">The French Revolution and the period related to it, or more generically, change of political and social institutions by radical means.</rdfs:comment>
+        <dct:subject rdf:resource="https://dbpedia.org/page/Category:French_Revolution"/>
+        <dct:source rdf:resource="https://www.cnrtl.fr/definition/r%C3%A9volution"/>
+        <frac:attestation rdf:resource="da_révolution_4"/>
+    </ontolex:LexicalSense>
+    
+    <!-- Lexical concepts -->
+    <ontolex:LexicalConcept rdf:about="lc_révolution_1">
+        <ontolex:reference rdf:resource="c_bnlm_fra"/>
+        <frac:embedding rdf:resource="neighb_révolution_1"/>
+        <frac:attestation rdf:resource="ca_révolution_1"/>
+        <ontolex:lexicalizedSense rdf:resource="d_plex_fra_révolution_n_I.B.2"/>
+    </ontolex:LexicalConcept>
+    
+    <ontolex:LexicalConcept rdf:about="lc_révolution_2">
+        <ontolex:reference rdf:resource="c_bnlm_fra"/>
+        <frac:embedding rdf:resource="neighb_révolution_2"/>
+        <frac:attestation rdf:resource="ca_révolution_2"/>
+        <ontolex:lexicalizedSense rdf:resource="d_plex_fra_révolution_n_I.B.1"/>
+    </ontolex:LexicalConcept>
+    
+    <ontolex:LexicalConcept rdf:about="lc_révolution_3.1">
+        <ontolex:reference rdf:resource="c_bnlm_fra"/>
+        <frac:embedding rdf:resource="neighb_révolution_3.1"/>
+        <frac:attestation rdf:resource="ca_révolution_3.1"/>
+        <ontolex:lexicalizedSense rdf:resource="d_plex_fra_révolution_n_II.A.1"/>
+    </ontolex:LexicalConcept>  
+    
+    <ontolex:LexicalConcept rdf:about="lc_révolution_3.2">
+        <ontolex:reference rdf:resource="c_bnlm_fra"/>
+        <frac:embedding rdf:resource="neighb_révolution_3.2"/>
+        <frac:attestation rdf:resource="ca_révolution_3.2"/>
+        <ontolex:lexicalizedSense rdf:resource="d_plex_fra_révolution_n_II.B.2"/>
+    </ontolex:LexicalConcept>
+    
+    <ontolex:LexicalConcept rdf:about="lc_révolution_4">
+        <ontolex:reference rdf:resource="c_bnlm_fra"/>
+        <frac:embedding rdf:resource="neighb_révolution_4"/>
+        <frac:attestation rdf:resource="ca_révolution_4"/>
+        <ontolex:lexicalizedSense rdf:resource="d_plex_fra_révolution_n_II.B.3"/>
+    </ontolex:LexicalConcept>
+    
+    <!-- Observations -->
+    <!-- Corpus observations -->
+    <!-- Frequency -->
+    <frac:Frequency rdf:about="freq_révolution_1">
+        <dct:description rdf:resource="freq_descr"/>
+        <rdf:value rdf:datatype="int">16</rdf:value>
+        <frac:observedIn rdf:resource="c_bnlm_fra"/>
+        <lexinfo:termType rdf:resource="ontolex:Form"/>
+    </frac:Frequency>
+    
+    <frac:Frequency rdf:about="freq_révolution_2">
+        <dct:description rdf:resource="freq_descr"/>
+        <rdf:value rdf:datatype="int">276</rdf:value>
+        <frac:observedIn rdf:resource="c_bnlm_fra"/>
+        <lexinfo:termType rdf:resource="ontolex:Form"/>
+    </frac:Frequency>
+    
+    <frac:Frequency rdf:about="freq_révolution_3">
+        <dct:description rdf:resource="freq_descr"/>
+        <rdf:value rdf:datatype="int">97</rdf:value>
+        <frac:observedIn rdf:resource="c_bnlm_fra"/>
+        <lexinfo:termType rdf:resource="ontolex:Form"/>
+    </frac:Frequency>
+    
+    <frac:Frequency rdf:about="freq_révolution_4">
+        <dct:description rdf:resource="freq_descr"/>
+        <rdf:value rdf:datatype="int">82</rdf:value>
+        <frac:observedIn rdf:resource="c_bnlm_fra"/>
+        <lexinfo:termType rdf:resource="ontolex:Form"/>
+    </frac:Frequency>
+    
+    <!-- Similarity -->
+    <frac:Similarity rdf:about="neighb_révolution_1">
+        <dct:description rdf:resource="fra_neighb_descr"/>
+        <rdfs:comment rdf:resource="fra_neighb_sel_descr"/>
+        <rdf:value rdf:datatype="xsd:string">0.8964706659317017,0.8594921231269836,0.8329684138298035,0.8137587904930115,0.8117499351501465,0.8106127381324768,0.8101987242698669,0.8013384342193604,0.7999946475028992,0.7988070249557495</rdf:value>
+        <llodia:similarity>
+            <rdf:Seq>
+                <rdf:li>moyene</rdf:li>
+                <rdf:li>ajouter</rdf:li>
+                <rdf:li>chant</rdf:li>
+                <rdf:li>envelopper</rdf:li>
+                <rdf:li>corde</rdf:li>
+                <rdf:li>tige</rdf:li>
+                <rdf:li>relier</rdf:li>
+                <rdf:li>engrennat</rdf:li>
+                <rdf:li>rouage</rdf:li>
+                <rdf:li>chaussée</rdf:li>
+            </rdf:Seq>
+        </llodia:similarity>
+        <frac:observedIn rdf:resource="c_bnlm_fra"/>
+        <lexinfo:termType rdf:resource="ontolex:Form"/>
+    </frac:Similarity>
+    
+    <frac:Similarity rdf:about="neighb_révolution_2">
+        <dct:description rdf:resource="fra_neighb_descr"/>
+        <rdfs:comment rdf:resource="fra_neighb_sel_descr"/>
+        <rdf:value rdf:datatype="xsd:string">0.6533328294754028,0.6427814364433289,0.6365118622779846,0.5954096913337708,0.592833399772644,0.583309531211853</rdf:value>
+        <llodia:similarity>
+            <rdf:Seq>
+                <rdf:li>paraboloïde</rdf:li>
+                <rdf:li>polaire</rdf:li>
+                <rdf:li>lemniscate</rdf:li>
+                <rdf:li>engendrer</rdf:li>
+                <rdf:li>ellipsoïde</rdf:li>
+                <rdf:li>cubature</rdf:li>
+            </rdf:Seq>
+        </llodia:similarity>
+        <frac:observedIn rdf:resource="c_bnlm_fra"/>
+        <lexinfo:termType rdf:resource="ontolex:Form"/>
+    </frac:Similarity>
+    
+    <frac:Similarity rdf:about="neighb_révolution_3.1">
+        <dct:description rdf:resource="fra_neighb_descr"/>
+        <rdfs:comment rdf:resource="fra_neighb_sel_descr"/>
+        <rdf:value rdf:datatype="xsd:string">0.7029881477355957,0.6804066300392151,0.6162623763084412</rdf:value>
+        <llodia:similarity>
+            <rdf:Seq>
+                <rdf:li>écroulement</rdf:li>
+                <rdf:li>plutonien</rdf:li>
+                <rdf:li>explosion</rdf:li>
+            </rdf:Seq>
+        </llodia:similarity>
+        <frac:observedIn rdf:resource="c_bnlm_fra"/>
+        <lexinfo:termType rdf:resource="ontolex:Form"/>
+    </frac:Similarity>
+    
+    <frac:Similarity rdf:about="neighb_révolution_3.2">
+        <dct:description rdf:resource="fra_neighb_descr"/>
+        <rdfs:comment rdf:resource="fra_neighb_sel_descr"/>
+        <rdf:value rdf:datatype="xsd:string">0.6714510321617126,0.6618747115135193,0.6312911510467529,0.6250151991844177,0.6181774139404297,0.6090177297592163</rdf:value>
+        <llodia:similarity>
+            <rdf:Seq>
+                <rdf:li>nationalité</rdf:li>
+                <rdf:li>avènement</rdf:li>
+                <rdf:li>fédératif</rdf:li>
+                <rdf:li>changemens</rdf:li>
+                <rdf:li>codification</rdf:li>
+                <rdf:li>insurgé</rdf:li>
+            </rdf:Seq>
+        </llodia:similarity>
+        <frac:observedIn rdf:resource="c_bnlm_fra"/>
+        <lexinfo:termType rdf:resource="ontolex:Form"/>
+    </frac:Similarity>
+    
+    <frac:Similarity rdf:about="neighb_révolution_4">
+        <dct:description rdf:resource="fra_neighb_descr"/>
+        <rdfs:comment rdf:resource="fra_neighb_sel_descr"/>
+        <rdf:value rdf:datatype="xsd:string">0.6464478969573975,0.6315726637840271,0.6228543519973755,0.5726388692855835</rdf:value>
+        <llodia:similarity>
+            <rdf:Seq>
+                <rdf:li>vandalisme</rdf:li>
+                <rdf:li>insurrection</rdf:li>
+                <rdf:li>insurgé</rdf:li>
+                <rdf:li>usurper</rdf:li>
+            </rdf:Seq>
+        </llodia:similarity>
+        <frac:observedIn rdf:resource="c_bnlm_fra"/>
+        <lexinfo:termType rdf:resource="ontolex:Form"/>
+    </frac:Similarity>
+    
+    <!-- Embeddings -->
+    <frac:FixedSizeVector rdf:about="fixedv_révolution_1">
+        <dct:description rdf:resource="fra_embed_descr"/>
+        <dct:extent rdf:datatype="xsd:int">100</dct:extent>
+        <rdf:value rdf:datatype="xsd:string">-0.029493388,-0.26885313,0.261791,0.20178778,0.34000987,0.052506298,0.068228215,0.27088788,-0.3151693,0.014589794,-0.5012415,-0.18028258,0.17699772,0.12118351,-0.1447679,0.21668129,0.3166792,-0.54507625,-0.11023079,-0.9434793,-0.41822618,0.18611346,0.033970334,-0.015215795,0.23375218,0.086215295,-0.220425,0.43481266,0.07755341,0.28630945,0.025330184,-0.4907467,0.071395405,-0.54285485,0.35436,0.6631842,-0.008410308,-0.23490034,0.22014457,-0.44667032,-0.62758523,0.07534491,-0.37020057,0.17151885,0.40493843,0.01800576,0.095933735,-0.24522386,-0.057827782,-0.20045753,0.32414466,0.13866581,-0.046472248,0.050572585,0.18699564,0.13323516,-0.026125534,-0.07898288,-0.09340467,0.32261667,-0.26253027,-0.31057104,0.680044,0.07547861,-0.3282848,-0.022808716,0.57911676,0.49609068,-0.38447094,0.55823743,-0.40746525,0.34403145,-0.18986197,0.112146765,-0.41038185,-0.33554032,-0.23137552,-0.003141587,0.079450004,-0.43562117,-0.60474145,0.75661623,-0.30817983,0.67971337,-0.08376154,-0.054798715,-0.5014701,0.074841596,0.21584624,0.44963327,0.37640718,0.07604054,0.2673616,0.05611531,0.44158393,-0.50097144,0.2595177,0.053083897,0.25424668,-0.12119591</rdf:value>
+        <frac:observedIn rdf:resource="c_bnlm_fra"/>
+    </frac:FixedSizeVector>
+    
+    <frac:FixedSizeVector rdf:about="fixedv_révolution_2">
+        <dct:description rdf:resource="fra_embed_descr"/>
+        <dct:extent rdf:datatype="xsd:int">100</dct:extent>
+        <rdf:value rdf:datatype="xsd:string">-0.19647573,0.00603753,0.35229546,-1.1259332,-0.59275115,-0.12710647,-0.5913583,0.9908399,0.07897194,-0.37250927,-0.43170315,-0.7226921,0.84316146,0.175,0.57137126,-0.121558405,-0.042084947,0.010979683,0.54833955,0.082243845,0.81695724,0.2038656,0.6646416,-0.44689745,-0.50709313,0.32379895,-0.12283771,-0.30965653,0.24227718,-0.05172724,0.57578,0.41030177,0.5036936,-0.010599261,0.48442903,0.49764028,0.6238607,-0.12725866,-0.29542452,0.06465157,0.51352143,-0.67914486,0.2705745,0.59576374,0.86978984,0.7445906,-0.54332167,0.22570711,0.25841442,-0.40985224,-0.50126755,-0.30534005,-0.17893244,0.14281313,-0.16054024,0.08230463,0.33682925,0.19395469,-0.6936508,0.6863319,0.22114131,-0.1938928,0.084852695,0.04019805,-0.16587068,-0.07537027,0.25491485,0.21349625,0.92234457,0.1439115,-0.68021995,0.28784433,0.45365077,0.33090556,0.22689492,0.51743495,-0.31876642,-0.6247409,-0.13264523,0.21786505,-0.35713205,0.18070279,-0.33591053,0.3676053,0.0414087,0.23582241,0.60668725,0.28770357,-0.83584124,-0.3023707,0.2637014,-0.5450579,-0.52698594,0.028811755,0.888234,-0.5574656,-0.34326687,-1.1255379,-0.1702927,0.78273785</rdf:value>
+        <frac:observedIn rdf:resource="c_bnlm_fra"/>
+    </frac:FixedSizeVector>
+    
+    <frac:FixedSizeVector rdf:about="fixedv_révolution_3">
+        <dct:description rdf:resource="fra_embed_descr"/>
+        <dct:extent rdf:datatype="xsd:int">100</dct:extent>
+        <rdf:value rdf:datatype="xsd:string">-0.55741245,0.25159734,0.28185555,-0.17661981,0.6886905,-0.22484797,0.1631865,0.3495998,-0.29499424,-0.41670144,-0.03299919,-0.67659116,-0.24090637,-0.53478026,0.5913836,0.50943303,0.024094086,-0.28820404,0.59225136,0.06938002,0.30767715,-0.5914567,-0.218057,-0.44920674,-0.29590943,-0.44661453,-0.90046585,-0.07762879,0.45931014,0.083919294,0.54032165,0.13951612,-0.006592559,0.25120533,0.080309756,1.1363097,-0.44541195,0.48956567,-0.30535448,0.14718357,0.07277943,0.16942279,-0.41525915,0.49304688,-0.43281758,0.0325618,-0.26436844,0.04882083,-0.35411787,0.5695864,0.010613458,-0.18466961,-0.06252014,0.13279612,-0.4236029,0.36643082,1.0597728,-0.8958296,-0.42552215,-0.2729529,0.12792411,0.07334795,0.33934137,-0.050875645,-0.35836595,0.25629526,-0.43770126,0.044334322,0.6267832,-0.33755213,-0.17336583,-0.649192,-0.083055586,0.53192425,0.2287137,-0.061214972,0.12284083,0.58278346,0.21021669,0.15985861,-0.29170787,0.08247392,0.7994007,-0.39342973,0.5889889,-0.46733713,-0.245156,0.13338825,0.26746222,0.4991161,0.3551405,1.1439872,-0.04272023,0.23828804,0.6650343,0.7358525,0.10691684,0.15117317,0.3480635,-0.066126406</rdf:value>
+        <frac:observedIn rdf:resource="c_bnlm_fra"/>
+    </frac:FixedSizeVector>
+    
+    <frac:FixedSizeVector rdf:about="fixedv_révolution_4">
+        <dct:description rdf:resource="fra_embed_descr"/>
+        <dct:extent rdf:datatype="xsd:int">100</dct:extent>
+        <rdf:value rdf:datatype="xsd:string">-0.9596059,-0.017770845,0.43901417,-0.003218374,-0.005201784,-0.20316823,-0.8411245,0.101924375,0.30934784,-0.09547355,-0.17247444,0.31007344,-0.053212747,0.21446435,-0.90710163,0.15088704,0.035690878,-0.7897521,-0.61519897,0.05311286,0.6358764,-0.38907126,0.09595977,0.03346075,0.027091889,-0.09017015,0.38118026,0.421817,0.2153604,0.5078027,-0.13061194,-0.13044062,-0.4018483,0.2064638,0.22766992,-0.23433504,-0.14222868,-1.1558764,-0.34350535,-0.12164066,0.22073294,-0.548082,-0.16586249,0.33646473,0.01999436,-0.44098338,0.006278141,-0.15423496,0.13493483,-0.10275354,0.7039394,0.20590399,0.37835068,-0.71746427,0.005818897,0.39514205,0.21160692,0.2025301,0.10292371,-0.20240687,0.27007467,0.4956879,-0.6611372,-0.000903347,-0.09360686,-0.053035107,0.57523024,0.4503035,-0.29247043,0.4722953,-0.5339341,0.09864736,0.27470648,-0.119754076,-0.30602035,0.4607381,0.7119164,-0.16282025,0.26127115,-0.072533615,0.14979483,0.32399982,0.14035112,0.292948,-0.39443663,-0.41007584,0.3366562,0.5099016,0.30945176,-0.42594668,0.6135598,0.7592806,-0.7470643,-0.49381104,-0.3797369,0.46379817,0.0231104,-0.6781802,0.9353495,-0.16070063</rdf:value>
+        <frac:observedIn rdf:resource="c_bnlm_fra"/>
+    </frac:FixedSizeVector>
+    
+    <!-- Attestations -->
+    <!-- Dictionary attestations -->
+    <frac:Attestation rdf:about="da_révolution_1">
+        <ontolex:reference rdf:resource="d_plex_fra"/>
+        <dct:date>1727</dct:date>
+        <frac:citation>
+            <cito:Citation rdf:about="dc_révolution_1">
+                <dct:title>Eloge de Newton ds Brunot t. 6</dct:title>
+                <dct:creator>Fontenelle</dct:creator>
+                <dbo:country rdf:resource="http://dbpedia.org/resource/France"/>
+                <rdfs:comment>p. 1170</rdfs:comment>
+                <dct:source rdf:resource="https://www.cnrtl.fr/definition/r%C3%A9volution"/>
+            </cito:Citation>
+        </frac:citation>
+    </frac:Attestation>
+    
+    <frac:Attestation rdf:about="da_révolution_2">
+        <ontolex:reference rdf:resource="d_plex_fra"/>
+        <dct:date>1799</dct:date>
+        <frac:citation>
+            <cito:Citation rdf:about="dc_révolution_2">
+                <dct:title>Géom. descr.</dct:title>
+                <dct:creator>Monge</dct:creator>
+                <dbo:country rdf:resource="http://dbpedia.org/resource/France"/>
+                <rdfs:comment>p. 19</rdfs:comment>
+                <dct:source rdf:resource="https://www.cnrtl.fr/definition/r%C3%A9volution"/>
+            </cito:Citation>
+        </frac:citation>
+    </frac:Attestation>
+    
+    <frac:Attestation rdf:about="da_révolution_3.1">
+        <ontolex:reference rdf:resource="d_plex_fra"/>
+        <dct:date>1749</dct:date>
+        <frac:citation>
+            <cito:Citation rdf:about="dc_révolution_3.1">
+                <dct:title>Hist. et théorie de la terre</dct:title>
+                <dct:creator>Buffon</dct:creator>
+                <dbo:country rdf:resource="http://dbpedia.org/resource/France"/>
+                <rdfs:comment>p. 96</rdfs:comment>
+                <dct:source rdf:resource="https://www.cnrtl.fr/definition/r%C3%A9volution"/>
+            </cito:Citation>
+        </frac:citation>
+    </frac:Attestation>
+    
+    <frac:Attestation rdf:about="da_révolution_3.2">
+        <ontolex:reference rdf:resource="d_plex_fra"/>
+        <dct:date>1636</dct:date>
+        <frac:citation>
+            <cito:Citation rdf:about="dc_révolution_3.2">
+                <dct:title>Invantaire des deus langues, françoise et latine</dct:title>
+                <rdfs:comment>Title and page added to the ontology by the contributor.</rdfs:comment>
+                <dct:creator>Monet</dct:creator>
+                <dbo:country rdf:resource="http://dbpedia.org/resource/France"/>
+                <rdfs:comment>p. 769</rdfs:comment>
+                <dct:source rdf:resource="https://www.cnrtl.fr/definition/r%C3%A9volution"/>
+            </cito:Citation>
+        </frac:citation>
+    </frac:Attestation>
+    
+    <frac:Attestation rdf:about="da_révolution_4">
+        <ontolex:reference rdf:resource="d_plex_fra"/>
+        <dct:date>1789</dct:date>
+        <frac:citation>
+            <cito:Citation rdf:about="dc_révolution_4">
+                <dct:title>Annales patriotiques, 18 déc., 1/2 ds Fonds Barbier</dct:title>
+                <dbo:country rdf:resource="http://dbpedia.org/resource/France"/>
+                <dct:source rdf:resource="https://www.cnrtl.fr/definition/r%C3%A9volution"/>
+            </cito:Citation>
+        </frac:citation>
+    </frac:Attestation>
+    
+    <!-- Corpus attestations -->
+    <frac:Attestation rdf:about="ca_révolution_1">
+        <ontolex:reference rdf:resource="c_bnlm_fra"/>
+        <dct:date>1789</dct:date>
+        <frac:citation>
+            <cito:Citation rdf:about="cc_révolution_1">
+                <dct:title>L'art de conduire et regler les pendules et les montres</dct:title>
+                <dct:creator>F. Rosset</dct:creator>
+                <dct:publisher>Chez la Veuve de J. B. Kleber, Imp de Sa Majesté</dct:publisher>
+                <dbo:country rdf:resource="http://dbpedia.org/resource/Luxembourg"/>
+                <rdfs:comment rdf:resource="fra_cc_révolution1_descr"/>
+                <rdf:value rdf:datatype="xsd:string">La roue de longue tige ou grande moyene fait une révolution par heure, le pivot de cette roue passe à travers la platine jusque pardessus l’aiguille de minute sur ce pivot ou autrement appellé tige entre afrotement dur, un canon qui porte la roue de chaussée, ce canon sert à porter par son extrémité l’aiguille des minutes, la roue de chaussée engrenne dans la roue du petit pignon détruit, ce pignon engrène à une roue qui porte un canon qui roule sur celui de la chaussée, la roue fait un tour dans douze heures; son canon sert à porter l’aiguille des heures.
+                </rdf:value>
+                <rdfs:comment>p. 13</rdfs:comment>
+                <dct:source rdf:resource="https://viewer.eluxemburgensia.lu/ark:70795/dqgfr3/pages/17/articles/DTL612"/>
+            </cito:Citation>
+        </frac:citation>
+    </frac:Attestation>
+    
+    <frac:Attestation rdf:about="ca_révolution_2">
+        <ontolex:reference rdf:resource="c_bnlm_fra"/>
+        <dct:date>1844</dct:date>
+        <frac:citation>
+            <cito:Citation rdf:about="cc_révolution_2">
+                <dct:title>Mémoires de la Société royale des sciences de Liège</dct:title>
+                <dct:creator>J.-N. Noël</dct:creator>
+                <dct:publisher>H. Dessain, Imprimeur-Libraire</dct:publisher>
+                <dbo:country rdf:resource="https://dbpedia.org/page/Belgium"/>
+                <rdf:value rdf:datatype="xsd:string">On démontre aisément, par le calcul infinitésimal , que si l’on communique à un vase cylindrique , contenant un liquide homogène, un mouvement uniforme de rotation autour de son axe vertical, le creux qui se forme dans la masse liquide est un paraboloïde de révolution autour de l’axe du cylindre.
+                </rdf:value>
+                <rdfs:comment>p. 29</rdfs:comment>
+                <dct:source rdf:resource="https://viewer.eluxemburgensia.lu/ark:70795/0vh3mc/pages/33/articles/DTL1748"/>
+            </cito:Citation>
+        </frac:citation>
+    </frac:Attestation>
+    
+    <frac:Attestation rdf:about="ca_révolution_3.1">
+        <ontolex:reference rdf:resource="c_bnlm_fra"/>
+        <dct:date>1883</dct:date>
+        <frac:citation>
+            <cito:Citation rdf:about="cc_révolution_3.1">
+                <dct:title>Trois ans dans l'Amérique du Sud. République de l’Uruguay. Aventures, chasses &amp; mœurs</dct:title>
+                <dct:creator>Albert Gras</dct:creator>
+                <dct:publisher>Jos. Beffort, Succ. de L’Impr. Joris, Éditeur</dct:publisher>
+                <dbo:country rdf:resource="http://dbpedia.org/resource/Luxembourg"/>
+                <rdf:value rdf:datatype="xsd:string">L’aspect général des Canaries est abrupt, de hautes falaises, continuellement battues par les eaux, en forment la base, et font réfléchir aux grandes révolutions plutoniennes qui à l’époque de la formation, ont bouleversé l’univers.
+                </rdf:value>
+                <rdfs:comment>pp. 22-23</rdfs:comment>
+                <dct:source rdf:resource="https://viewer.eluxemburgensia.lu/ark:70795/n3234k/pages/34/articles/DTL1599"/>
+            </cito:Citation>
+        </frac:citation>
+    </frac:Attestation>
+    
+    <frac:Attestation rdf:about="ca_révolution_3.2">
+        <ontolex:reference rdf:resource="c_bnlm_fra"/>
+        <dct:date>1883</dct:date>
+        <frac:citation>
+            <cito:Citation rdf:about="cc_révolution_3.2">
+                <dct:title>Trois ans dans l'Amérique du Sud. République de l’Uruguay. Aventures, chasses &amp; mœurs</dct:title>
+                <dct:creator>Albert Gras</dct:creator>
+                <dct:publisher>Jos. Beffort, Succ. de L’Impr. Joris, Éditeur</dct:publisher>
+                <dbo:country rdf:resource="http://dbpedia.org/resource/Luxembourg"/>
+                <rdf:value rdf:datatype="xsd:string">Le recado du gaucho lui sert de lit, il étend les coronas par terre, la couverture et les cojinillos par dessus, le bât sera son oreiller, et le poncho sa couverture. Il est des gens qui, pendant toute leur vie, n’ont pas dormi autrement; mais c’est surtout pendant les révolutions, lorsque les insurgés tiennent la campagne, que ce genre de couchette est forcément adopté.
+                </rdf:value>
+                <rdfs:comment>p. 136</rdfs:comment>
+                <dct:source rdf:resource="https://viewer.eluxemburgensia.lu/ark:70795/n3234k/pages/148/articles/DTL1604"/>
+            </cito:Citation>
+        </frac:citation>
+    </frac:Attestation>
+    
+    <frac:Attestation rdf:about="ca_révolution_4">
+        <ontolex:reference rdf:resource="c_bnlm_fra"/>
+        <dct:date>1904</dct:date>
+        <frac:citation>
+            <cito:Citation rdf:about="cc_révolution_4">
+                <dct:title>Histoire de Notre-Dame de Luxembourg. Honorée sous le titre de Consolatrice des affligés. Depuis son jubilé de 1866 jusqu’à nos jours.</dct:title>
+                <dct:creator>Par un membre de l'œuvre des missionnaires luxembourgeois</dct:creator>
+                <dct:publisher>Librairie Erpelding</dct:publisher>
+                <dbo:country rdf:resource="http://dbpedia.org/resource/Luxembourg"/>
+                <rdf:value rdf:datatype="xsd:string">Pendant ces préparatifs, la date du jubilé approchait. L’autel votif fut érigé et tous les bijoux anciens et nouveaux, échappés au vandalisme de la révolution française, ainsi que la grande quantité qui était venue s’y ajouter depuis, vinrent orner le trône de notre Vierge.
+                </rdf:value>
+                <rdfs:comment>p. 10</rdfs:comment>
+                <dct:source rdf:resource="https://viewer.eluxemburgensia.lu/ark:70795/x8fmkm/pages/16/articles/DTL493"/>
+            </cito:Citation>
+        </frac:citation>
+    </frac:Attestation>
+    
+    <!-- Translations -->
+    <vartrans:TranslationSet rdf:about="ts_révolution">
+        <rdfs:comment>Sometimes, it may be required to link the translations at the level of lexical senses instead of forms.</rdfs:comment>
+        <vartrans:source rdf:resource="f_révolution"/>
+        <vartrans:target rdf:resource="f_mahapehá"/>
+        <vartrans:target rdf:resource="f_revoliucija"/>
+        <vartrans:target rdf:resource="f_revolution"/>
+        <vartrans:target rdf:resource="f_revoluție"/>
+        <ontolex:reference rdf:resource="d_wict_mul"/>
+        <dct:source rdf:resource="https://fr.wiktionary.org/wiki/r%C3%A9volution"/>
+    </vartrans:TranslationSet>
+    
+    <!-- Etymologies -->
+    <lemonEty:Etymology rdf:about="e_révolution">
+        <llodia:etymon rdf:resource="f_revolutio"/>
+        <ontolex:reference rdf:resource="d_wict_mul"/>
+        <dct:source rdf:resource="https://fr.wiktionary.org/wiki/r%C3%A9volution"/>
+    </lemonEty:Etymology>  
+    
+    <!-- Descriptions -->
+    <rdfs:Literal rdf:about="freq_descr">
+        <rdf:langString xml:lang="eng">Frequency of the form.</rdf:langString>
+    </rdfs:Literal>
+    
+    <rdfs:Literal rdf:about="fra_neighb_descr">
+        <rdf:langString xml:lang="eng">The list of top neighbours of the form was computed using gensim word2vec and cosine similarity.</rdf:langString>
+    </rdfs:Literal>
+    
+    <rdfs:Literal rdf:about="fra_neighb_sel_descr">
+        <rdf:langString xml:lang="eng">AI-prompted selection from the list of top 20 neighbours, alignment with dictionary senses and human validation.</rdf:langString>
+    </rdfs:Literal>
+    
+    <rdfs:Literal rdf:about="fra_embed_descr">
+        <rdf:langString xml:lang="eng">The embedding method used was gensim word2vec, skip-gram.</rdf:langString>
+    </rdfs:Literal>
+    
+    <rdfs:Literal rdf:about="fra_cc_révolution1_descr">
+        <rdf:langString xml:lang="eng">AI-prompted correction of OCR errors and human validation.</rdf:langString>
+    </rdfs:Literal>
+    
+
+    <!-- Hebrew -->
+    
+    <!-- Time intervals -->
+    <llodia:TimeInterval rdf:about="ti_1001-1500">
+        <dct:start>1001-01-01</dct:start>
+        <dct:end>1500-12-31</dct:end>
+    </llodia:TimeInterval>
+    
+    <llodia:TimeInterval rdf:about="ti_1501-1600">
+        <dct:start>1501-01-01</dct:start>
+        <dct:end>1600-12-31</dct:end>
+    </llodia:TimeInterval>
+	
+    <llodia:TimeInterval rdf:about="ti_1601-1900">
+        <dct:start>1601-01-01</dct:start>
+        <dct:end>1900-12-31</dct:end>
+    </llodia:TimeInterval>
+	
+    <llodia:TimeInterval rdf:about="ti_1901-2010">
+        <dct:start>1901-01-01</dct:start>
+        <dct:end>2010-12-31</dct:end>
+    </llodia:TimeInterval>
+    
+    <!-- Resources -->
+    <!-- Dictionary 1: Milog -->
+    <llodia:Dictionary rdf:about="d_milog_heb">
+        <dct:title>Milog</dct:title>
+        <dct:language rdf:resource="http://lexvo.org/id/iso639-3/mul"/>
+        <dct:publisher>The free online Hebrew dictionary</dct:publisher>
+        <llodia:publicationDate>2002</llodia:publicationDate>
+        <dct:source rdf:resource="https://milog.co.il/"/>
+    </llodia:Dictionary>
+    
+    <!-- Dictionary 2: Wiktionary for Hebrew -->
+    <llodia:Dictionary rdf:about="d_wict_heb">
+        <dct:title>Wiktionary</dct:title>
+        <dct:language rdf:resource="http://lexvo.org/id/iso639-3/mul"/>
+        <dct:publisher>Wikimedia Foundation</dct:publisher>
+        <llodia:publicationDate>2002</llodia:publicationDate>
+        <dct:source rdf:resource="https://he.wiktionary.org/"/>
+    </llodia:Dictionary>
+    
+    <!-- Corpus: Responsa -->
+    <llodia:Corpus rdf:about="c_responsa_heb">
+        <dct:title>Responsa</dct:title>
+        <dct:language rdf:resource="http://lexvo.org/id/iso639-3/heb"/>
+        <dct:publisher>Bar Ilan Responsa Project</dct:publisher>
+        <llodia:publicationDate>2010</llodia:publicationDate>
+        <dbo:country rdf:resource="http://dbpedia.org/resource/Israel"/>
+        <dct:source rdf:resource="https://www.responsa.co.il/home.en-US.aspx"/>
+        <llodia:timeSpan rdf:resource="ti_1001-2010"/>
+    </llodia:Corpus>
+    
+    <!-- Forms -->
+    <ontolex:Form rdf:about="f_mahapehá">
+        <rdf:value xml:lang="heb">מהפכה mahapehá</rdf:value>
+            <llodia:translationSet rdf:resource="ts_mahapehá"/>
+            <lemonEty:etymology rdf:resource="e_mahapehá"/>
+    </ontolex:Form>
+    
+    <ontolex:Form rdf:about="f_hapah">
+        <rdf:value xml:lang="heb">הפך hapah</rdf:value>
+    </ontolex:Form>
+    
+    <!-- Lexical records -->
+    <llodia:LexicalRecord rdf:about="r_mahapehá_1">
+        <llodia:form rdf:resource="f_mahapehá"/>
+        <llodia:timeSlice rdf:resource="ti_1001-1500"/>
+        <frac:frequency rdf:resource="freq_mahapehá_1"/>
+        <frac:embedding rdf:resource="fixedv_mahapehá_1"/>
+        <llodia:lexicalConcept rdf:resource="lc_mahapehá_1"/>
+    </llodia:LexicalRecord>
+	
+    <llodia:LexicalRecord rdf:about="r_mahapehá_3">
+        <llodia:form rdf:resource="f_mahapehá"/>
+        <llodia:timeSlice rdf:resource="ti_1601-1900"/>
+        <frac:frequency rdf:resource="freq_mahapehá_3"/>
+        <frac:embedding rdf:resource="fixedv_mahapehá_3"/>
+        <llodia:lexicalConcept rdf:resource="lc_mahapehá_3"/>
+    </llodia:LexicalRecord>
+	
+    <llodia:LexicalRecord rdf:about="r_mahapehá_4">
+        <llodia:form rdf:resource="f_mahapehá"/>
+        <llodia:timeSlice rdf:resource="ti_1901-2010"/>
+        <frac:frequency rdf:resource="freq_mahapehá_4"/>
+        <frac:embedding rdf:resource="fixedv_mahapehá_4"/>
+        <llodia:lexicalConcept rdf:resource="lc_mahapehá_4"/>
+    </llodia:LexicalRecord>
+    
+    <!-- Lexical entries -->
+    <ontolex:LexicalEntry rdf:about="le_mahapehá">
+        <ontolex:canonicalForm>
+            <ontolex:Form rdf:about="f_mahapehá">
+                <ontolex:writtenRep xml:lang="heb">מהפכה</ontolex:writtenRep>
+            </ontolex:Form>
+        </ontolex:canonicalForm>
+        <lexinfo:partOfSpeech rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#noun"/>
+        <ontolex:sense rdf:resource="d_milog_heb_mahapehá_n2"/>
+        <ontolex:sense rdf:resource="d_wict_heb_mahapehá_n1"/>
+    </ontolex:LexicalEntry>
+    
+    <!-- Lexical senses -->
+    <ontolex:LexicalSense rdf:about="d_wict_heb_mahapehá_n1">
+        <ontolex:reference rdf:resource="d_wict_heb"/>
+        <rdfs:comment xml:lang="eng">An event in history that changed the face of a certain country or the face of human society as a whole.</rdfs:comment>
+        <dct:subject rdf:resource="https://dbpedia.org/page/Category:History"/>
+        <dct:source rdf:resource="https://he.wiktionary.org/wiki/%D7%9E%D7%94%D7%A4%D7%9B%D7%94"/>
+        <rdfs:comment rdf:resource="heb_mahapehá_n_assoc_descr"/>
+    </ontolex:LexicalSense>
+    
+    <ontolex:LexicalSense rdf:about="d_milog_heb_mahapehá_n2">
+        <ontolex:reference rdf:resource="d_milog_heb"/>
+        <rdfs:comment xml:lang="eng">Complete restitution, changing the existing order and habits.</rdfs:comment>
+        <dct:subject rdf:resource="https://dbpedia.org/page/Category:Society"/>
+        <dct:source rdf:resource="https://milog.co.il/%D7%9E%D7%94%D7%A4%D7%9B%D7%94"/>
+        <rdfs:comment rdf:resource="heb_mahapehá_n_assoc_descr"/>
+    </ontolex:LexicalSense>
+    
+    <!-- Lexical concepts -->
+    <ontolex:LexicalConcept rdf:about="lc_mahapehá_1">
+        <ontolex:reference rdf:resource="c_responsa_heb"/>
+        <frac:embedding rdf:resource="neighb_mahapehá_1"/>
+        <frac:attestation rdf:resource="ca_mahapehá_1"/>
+        <frac:attestation rdf:resource="ca_mahapehá_1_2"/>
+        <ontolex:lexicalizedSense rdf:resource="d_milog_heb_mahapehá_n2"/>
+    </ontolex:LexicalConcept>
+    
+    <ontolex:LexicalConcept rdf:about="lc_mahapehá_3">
+        <ontolex:reference rdf:resource="c_responsa_heb"/>
+        <frac:embedding rdf:resource="neighb_mahapehá_3"/>
+        <frac:attestation rdf:resource="ca_mahapehá_3"/>
+        <frac:attestation rdf:resource="ca_mahapehá_3_2"/>
+        <ontolex:lexicalizedSense rdf:resource="d_wict_heb_mahapehá_n1"/>
+    </ontolex:LexicalConcept>
+    
+    <ontolex:LexicalConcept rdf:about="lc_mahapehá_4">
+        <ontolex:reference rdf:resource="c_responsa_heb"/>
+        <frac:embedding rdf:resource="neighb_mahapehá_4"/>
+        <frac:attestation rdf:resource="ca_mahapehá_4"/>
+        <frac:attestation rdf:resource="ca_mahapehá_4_2"/>
+        <ontolex:lexicalizedSense rdf:resource="d_wict_heb_mahapehá_n1"/>
+    </ontolex:LexicalConcept>
+    
+    <!-- Observations -->
+    <!-- Corpus observations -->
+    <frac:Frequency rdf:about="freq_mahapehá_1">
+        <dct:description rdf:resource="freq_descr"/>
+        <rdf:value rdf:datatype="int">2</rdf:value>
+        <frac:observedIn rdf:resource="c_responsa_heb"/>
+        <lexinfo:termType rdf:resource="ontolex:Form"/>
+    </frac:Frequency>
+	
+    <frac:Frequency rdf:about="freq_mahapehá_3">
+        <dct:description rdf:resource="freq_descr"/>
+        <rdf:value rdf:datatype="int">10</rdf:value>
+        <frac:observedIn rdf:resource="c_responsa_heb"/>
+        <lexinfo:termType rdf:resource="ontolex:Form"/>
+    </frac:Frequency>
+	
+    <frac:Frequency rdf:about="freq_mahapehá_4">
+        <dct:description rdf:resource="freq_descr"/>
+        <rdf:value rdf:datatype="int">18</rdf:value>
+        <frac:observedIn rdf:resource="c_responsa_heb"/>
+        <lexinfo:termType rdf:resource="ontolex:Form"/>
+    </frac:Frequency>
+    
+    <frac:Similarity rdf:about="neighb_mahapehá_1">
+        <dct:description rdf:resource="heb_neighb_descr"/>
+        <rdfs:comment>Selected from top 28. Low frequency, many of the terms are not informative, occasionally yielded bigrams as unigrams</rdfs:comment>
+        <rdf:value rdf:datatype="xsd:string">0.723483562469482,0.71494972705841,0.7080038189888,0.70350706577301,0.698437631130218,0.69764894247055,0.69715803861618,0.696751654148101,0.695540308952331,0.69504314661026</rdf:value>
+        <llodia:similarity>
+            <rdf:Seq>
+                <rdf:li>מהטעות</rdf:li>
+                <rdf:li>החיסרון</rdf:li>
+                <rdf:li>מוסרם</rdf:li>
+                <rdf:li>התועבה</rdf:li>
+                <rdf:li>מהאמת</rdf:li>
+                <rdf:li>והכפירה</rdf:li>
+                <rdf:li>במופתים</rdf:li>
+                <rdf:li>והאמנה</rdf:li>
+                <rdf:li>מלהשתדל</rdf:li>
+                <rdf:li>האלהיות</rdf:li>
+            </rdf:Seq>
+        </llodia:similarity>
+        <frac:observedIn rdf:resource="c_responsa_heb"/>
+        <lexinfo:termType rdf:resource="ontolex:Form"/>
+    </frac:Similarity>
+	
+    <frac:Similarity rdf:about="neighb_mahapehá_3">
+        <dct:description rdf:resource="heb_neighb_descr"/>
+        <rdfs:comment>Selected from top 30. The list continues with more informative terms.</rdfs:comment>
+        <rdf:value rdf:datatype="xsd:string">0.709095060825347,0.680224597454071,0.661442101001739,0.660675585,0.657544255256652,0.657345473766326,0.656235575675964,0.651061118,0.650276303,0.648181438</rdf:value>
+        <llodia:similarity>
+            <rdf:Seq>
+                <rdf:li>ויהרגנו</rdf:li>
+                <rdf:li>מזנותיה</rdf:li>
+                <rdf:li>כנתייחדה</rdf:li>
+                <rdf:li>מופקרת</rdf:li>
+                <rdf:li>תעגן</rdf:li>
+                <rdf:li>לאונסה</rdf:li>
+                <rdf:li>פתתה</rdf:li>
+                <rdf:li>תאיבה</rdf:li>
+                <rdf:li>שהזנות</rdf:li>
+                <rdf:li>משעבדת</rdf:li>
+            </rdf:Seq>
+        </llodia:similarity>
+        <frac:observedIn rdf:resource="c_responsa_heb"/>
+        <lexinfo:termType rdf:resource="ontolex:Form"/>
+    </frac:Similarity>
+	
+    <frac:Similarity rdf:about="neighb_mahapehá_4">
+        <dct:description rdf:resource="heb_neighb_descr"/>
+        <rdfs:comment>Selected from top 25. The list continues with more informative terms</rdfs:comment>
+        <rdf:value rdf:datatype="xsd:string">0.713807344,0.660503089,0.647504926,0.645855367,0.645328164100646,0.640347003936767,0.637831867,0.637033343,0.63592577,0.635618985</rdf:value>
+        <llodia:similarity>
+            <rdf:Seq>
+                <rdf:li>לחולל</rdf:li>
+                <rdf:li>ודכאון</rdf:li>
+                <rdf:li>החייאה</rdf:li>
+                <rdf:li>ממכונות</rdf:li>
+                <rdf:li>פאטולוגיה</rdf:li>
+                <rdf:li>הרפורמיים</rdf:li>
+                <rdf:li>המלאכותית</rdf:li>
+                <rdf:li>ריאתית</rdf:li>
+                <rdf:li>מתפרסמת</rdf:li>
+                <rdf:li>העצבית</rdf:li>
+            </rdf:Seq>
+        </llodia:similarity>
+        <frac:observedIn rdf:resource="c_responsa_heb"/>
+        <lexinfo:termType rdf:resource="ontolex:Form"/>
+    </frac:Similarity>
+    
+    <frac:FixedSizeVector rdf:about="fixedv_mahapehá_1">
+        <dct:description rdf:resource="heb_embed_descr"/>
+        <dct:extent rdf:datatype="xsd:int">100</dct:extent>
+        <rdf:value rdf:datatype="xsd:string">0.5609672,0.15837437,0.2649137,0.04304401,-0.07119916,-0.23131835,0.19352563,0.5692086,0.23280424,-0.25497055,-0.053680703,-0.04081093,-0.2249531,0.1463023,0.08493608,-0.023621956,-0.16912104,-0.14464042,0.15711534,-0.24381645,-0.31860998,-0.012934424,-0.25366354,-0.3105025,-0.36649817,0.13118532,-0.3862266,0.089535505,-0.2550392,0.23369524,0.20949394,-0.117297806,0.53204215,0.11223811,-0.15916029,-0.47421873,-0.3872201,-0.48304197,-0.090756126,-0.14608704,0.1100383,-0.27299142,-0.19417308,-0.046815135,0.1373097,0.119964376,-0.091217525,0.100948095,-0.16939165,-0.100667074,-0.21160758,-0.011392134,-0.28292638,-0.25402504,-0.056103244,0.19768454,-0.2882423,0.19697917,0.037056174,-0.20393537,0.23581521,0.1334893,0.10026606,0.1937671,-0.2504765,0.49327704,0.4182454,0.2873318,-0.25314534,0.0545333,0.16984594,0.11866129,0.60986954,0.118052624,0.39813375,-0.001025049,-0.023385935,-0.30093664,-0.31929934,-0.15810822,0.05167102,-0.06607064,0.04163565,0.14759299,0.100914046,-0.26465052,-0.21325493,0.22496112,0.3840431,-0.013321082,-0.031683885,0.001375663,0.14597362,0.36070627,0.18665491,0.20489773,0.22970566,-0.25598258,-0.026036888,0.016374063</rdf:value>
+        <frac:observedIn rdf:resource="c_responsa_heb"/>
+    </frac:FixedSizeVector>
+	
+    <frac:FixedSizeVector rdf:about="fixedv_mahapehá_3">
+        <dct:description rdf:resource="heb_embed_descr"/>
+        <dct:extent rdf:datatype="xsd:int">100</dct:extent>
+        <rdf:value rdf:datatype="xsd:string">-0.5926584,0.20562312,0.26249394,0.40258387,0.18592812,-0.2933253,-0.45188433,0.49883094,-0.06874701,0.19698742,0.024654593,-0.3139282,-0.11826272,-0.077244945,0.3380263,0.21019895,0.4221814,-0.0030959465,0.12227109,-0.30417496,-0.23795037,0.20339184,0.27931452,0.8819162,0.25379217,0.32706302,-0.2147941,0.0067864526,0.03180661,0.3247692,0.6669688,-0.15489756,-0.22581682,-0.0049356967,0.2964302,-0.1285825,-0.06835959,0.25625473,0.12546462,0.1739397,0.0032882832,-0.047200657,0.27046904,0.25008819,0.16765144,-0.2909478,0.1135249,-0.10541563,0.18809158,-0.20989904,-0.13243958,-0.37334648,0.14455841,0.1475549,-0.3478683,-0.11961707,-0.3948694,-0.2251007,0.36026636,0.15419404,-0.46652877,0.29236582,-0.13528168,0.4373641,-0.542451,-0.15286158,-0.19073932,0.21708256,-0.49819195,0.49843866,-0.23171835,-0.19577911,0.048299603,0.39962226,0.09780643,0.19897087,-0.59855807,-0.09162327,-0.13780199,-0.020245316,0.3872512,0.034728236,-0.2970425,-0.15763478,0.15697809,0.07251994,0.2832923,0.54049253,0.19998363,0.04571892,0.34791195,0.123156615,0.14597426,-0.49125746,0.3860645,0.14690214,0.36462015,-0.072158076,-0.053575583,-0.13222373</rdf:value>
+        <frac:observedIn rdf:resource="c_responsa_heb"/>
+    </frac:FixedSizeVector>
+	
+    <frac:FixedSizeVector rdf:about="fixedv_mahapehá_4">
+        <dct:description rdf:resource="heb_embed_descr"/>
+        <dct:extent rdf:datatype="xsd:int">100</dct:extent>
+        <rdf:value rdf:datatype="xsd:string">0.30531174,0.07737851,0.93803644,0.1850885,0.23116799,-0.025143445,0.38692862,0.23803782,-0.057903036,-0.12645175,-0.26409608,-0.14306426,0.063117094,0.28460762,0.31751218,0.29739898,-0.008906254,-0.09321949,0.185007,-0.3336835,0.19113344,1.1743429,0.43340683,-0.021743994,-0.044206016,0.45426917,-0.31559393,-0.15254512,-0.79074645,-0.03722897,0.038630255,-0.026391773,-0.398614,0.19738723,0.018888138,-0.1179972,0.25569314,-0.49921557,0.062404055,-0.1951934,0.23102464,0.04956346,0.37990105,-0.32646778,-0.07295386,-0.052891463,-0.22002332,-0.5791557,0.17704447,0.38647988,0.097746074,0.46456054,0.14473192,0.12874736,1.0014911,-0.3759976,-0.0017400489,0.65490305,-0.49884793,0.3771057,0.24783507,0.8657554,0.09869449,-0.0071483264,-0.38466367,0.10647724,0.33480144,0.16602117,0.34236643,-0.19229552,-0.70865977,-0.017072603,-1.0726724,-0.7081992,0.20740287,-0.407761,0.04569814,-0.67920166,0.49274448,-0.45269307,0.13175039,-0.38751325,-0.116675414,0.36387122,-0.16177063,0.1671164,-0.5551233,0.538506,0.7431046,-0.066661865,-0.47296175,-0.04911572,0.3595938,0.19166882,0.0051962924,0.4709407,-0.7090794,-0.0127857225,0.2751915,-0.06218006</rdf:value>
+        <frac:observedIn rdf:resource="c_responsa_heb"/>
+    </frac:FixedSizeVector>
+    
+    <!-- Attestations -->
+    <!-- Corpus attestations -->
+    <frac:Attestation rdf:about="ca_mahapehá_1">
+        <ontolex:reference rdf:resource="c_responsa_heb"/>
+        <dct:date>1186</dct:date>
+        <frac:citation>
+            <cito:Citation rdf:about="cc_mahapehá_1">
+                <dct:title>שו"ת רבי אברהם בן הרמב"ם</dct:title>
+                <dct:creator>רבי אברהם</dct:creator>
+                <dct:publisher>Responsa Project</dct:publisher>
+                <dbo:country rdf:resource="http://dbpedia.org/resource/Israel"/>
+                <rdfs:comment rdf:resource="heb_ca_mahapehá_descr"/>
+                <rdf:value rdf:datatype="xsd:string">שהעוסקים במחקר בשאלות ההלכה ובעיון בעניני הדת צריך שתהיה כונת כל אחד מהם להגיע אל האמת ולחזר מהפכה ולא נצחון הסברה שבאה להם והדעה שעלתה במחשבתם.
+                </rdf:value>
+                <rdfs:comment>סימן פב</rdfs:comment>
+                <dct:source rdf:resource="https://www.responsa.co.il"/>
+            </cito:Citation>
+        </frac:citation>
+    
+    </frac:Attestation><frac:Attestation rdf:about="ca_mahapehá_1_2">
+        <ontolex:reference rdf:resource="c_responsa_heb"/>
+        <dct:date>1240</dct:date>
+        <frac:citation>
+            <cito:Citation rdf:about="cc_mahapehá_1_2">
+                <dct:title>שו"ת מהר"ם מרוטנבורג דפוס פראג</dct:title>
+                <dct:creator>מהר"ם בר ברוך</dct:creator>
+                <dct:publisher>Responsa Project</dct:publisher>
+                <dbo:country rdf:resource="http://dbpedia.org/resource/Israel"/>
+                <rdfs:comment rdf:resource="heb_ca_mahapehá_descr"/>
+                <rdf:value rdf:datatype="xsd:string">יראה כל שכן בשבועה שהנתבע מהפכה עליו ואינה קבועה עליו וגם הוא נוטל בשבילה דאין מגלגלין בה. 
+                </rdf:value>
+                <rdfs:comment>סימן שכז</rdfs:comment>
+                <dct:source rdf:resource="https://www.responsa.co.il"/>
+            </cito:Citation>
+        </frac:citation>
+    </frac:Attestation>
+	
+    <frac:Attestation rdf:about="ca_mahapehá_3">
+        <ontolex:reference rdf:resource="c_responsa_heb"/>
+        <dct:date>1882</dct:date>
+        <frac:citation>
+            <cito:Citation rdf:about="cc_mahapehá_3">
+                <dct:title>שו"ת הגם שאול</dct:title>
+                <dct:creator>רבי שאול אבן דנאן </dct:creator>
+                <dct:publisher>Responsa Project</dct:publisher>
+                <dbo:country rdf:resource="http://dbpedia.org/resource/Israel"/>
+                <rdfs:comment rdf:resource="heb_ca_mahapehá_descr"/>
+                <rdf:value rdf:datatype="xsd:string">הנשואין לא היו בעיר מולדת האשה ומפני המהפכה הוכרחו למלט נפשם ולצאת מן המלכות ההיא לאשר ימצאו מנוח, ודרך מקרה באו עיר מולדת האשה וישבו שם זמן מה ולא מצא האיש שם די מחייתו, והואיל הלוך לעיר אחרת מקום תורה וחכמה לקבוע שם דירתו, על זה כתב הריב"ש ז"ל שבצאתם חוץ ממקום נשואיהם מפני מהפכה ברשות היה להוליכה לכל מקום שיזדמן לו מבלי השגחה במקום הנשואין אם טוב ואם רע זה ממנו,
+                </rdf:value>
+                <rdfs:comment>חלק א סימן עא</rdfs:comment>
+                <dct:source rdf:resource="https://www.responsa.co.il"/>
+            </cito:Citation>
+        </frac:citation>
+    </frac:Attestation>
+    
+    <frac:Attestation rdf:about="ca_mahapehá_3_2">
+        <ontolex:reference rdf:resource="c_responsa_heb"/>
+        <dct:date>1678</dct:date>
+        <frac:citation>
+            <cito:Citation rdf:about="cc_mahapehá_3_2">
+                <dct:title>שו"ת חוות יאיר</dct:title>
+                <dct:creator>רבי יאיר חיים בכרך</dct:creator>
+                <dct:publisher>Responsa Project</dct:publisher>
+                <dbo:country rdf:resource="http://dbpedia.org/resource/Israel"/>
+                <rdfs:comment rdf:resource="heb_ca_mahapehá_descr"/>
+                <rdf:value rdf:datatype="xsd:string">עדיין בק"ק מיץ אשר להם /אליהם/ ברחתי עם כל אשר לי בעת המהפכה כאוד מוצל מאש שריפת הצרפתים את מקום הנ"ל ביום ד\' י"ג סיון תמ"ט ואין פה בידי לא ש"ס ולא פוסקים כי גם הב"ב פה הבריחו את אשר להם מפני חמת המציק ומ"מ כתבתי מה שעלה בזכרוני כנים ולא נים תיר ולא תיר ליפוי כח עדיין בק"ק מיץ אשר להם /אליהם/ ברחתי עם כל אשר לי בעת המהפכה כאוד מוצל מאש שריפת הצרפתים את מקום הנ"ל ביום ד\' י"ג סיון תמ"ט ואין פה בידי לא ש"ס ולא פוסקים כי גם הב"ב פה הבריחו את אשר להם מפני חמת המציק ומ"מ כתבתי מה שעלה בזכרוני כנים ולא נים תיר ולא תיר ליפוי כח עדיין בק"ק מיץ אשר להם /אליהם/ ברחתי עם כל אשר לי בעת המהפכה כאוד מוצל מאש שריפת הצרפתים את מקום הנ"ל ביום ד\' י"ג סיון תמ"ט ואין פה בידי לא ש"ס ולא פוסקים כי גם הב"ב פה הבריחו את אשר להם מפני חמת המציק ומ"מ כתבתי מה שעלה בזכרוני כנים ולא נים תיר ולא תיר ליפוי כח 
+                </rdf:value>
+                <rdfs:comment>סימן קלד</rdfs:comment>
+                <dct:source rdf:resource="https://www.responsa.co.il"/>
+            </cito:Citation>
+        </frac:citation>
+    </frac:Attestation>
+	
+    <frac:Attestation rdf:about="ca_mahapehá_4">
+        <ontolex:reference rdf:resource="c_responsa_heb"/>
+        <dct:date>2005</dct:date>
+        <frac:citation>
+            <cito:Citation rdf:about="cc_mahapehá_4">
+                <dct:title>פסקי דין - ירושלים דיני ממונות ובירורי יוחסין</dct:title>
+                <dct:creator>תיק בית ההוראה שע"י בית הדין מס' 110</dct:creator>
+                <dct:publisher>Responsa Project</dct:publisher>
+                <dbo:country rdf:resource="http://dbpedia.org/resource/Israel"/>
+                <rdfs:comment rdf:resource="heb_ca_mahapehá_descr"/>
+                <rdf:value rdf:datatype="xsd:string">מהפכה החומינסטית רצתה האשה לעלות לארץ והבעל שהיו לו עסקים במקום העדיף להשאר באיראן. האשה וילדיה עלו לארץ עם רכוש של כמה שטיחים מביתה, והבעל נותר שם. משארך הזמן בקשה האשה גט והבעל סרב. 
+                </rdf:value>
+                <rdfs:comment>ט פס"ד המתחיל בעמוד רעד</rdfs:comment>
+                <dct:source rdf:resource="https://www.responsa.co.il"/>
+            </cito:Citation>
+        </frac:citation>
+    </frac:Attestation>
+    
+    <frac:Attestation rdf:about="ca_mahapehá_4_2">
+        <ontolex:reference rdf:resource="c_responsa_heb"/>
+        <dct:date>1917</dct:date>
+        <frac:citation>
+            <cito:Citation rdf:about="cc_mahapehá_4_2">
+                <dct:title>שו"ת ציץ אליעזר</dct:title>
+                <dct:creator>הרב אליעזר יהודה ולדנברג</dct:creator>
+                <dct:publisher>Responsa Project</dct:publisher>
+                <dbo:country rdf:resource="http://dbpedia.org/resource/Israel"/>
+                <rdfs:comment rdf:resource="heb_ca_mahapehá_descr"/>
+                <rdf:value rdf:datatype="xsd:string">ואי אפשר להגיע לידי מדרגת התשובה האמיתית והבר - קיימא לחולל מהפכה רוחנית גדולה הן בתשובת היחיד והן בתשובת הכלל, כי אם בהכנה מוקדמת להכשיר את הלב ולהכין את הנפש לקראת הסערהה
+                </rdf:value>
+                <rdfs:comment>חלק כב סימן לב</rdfs:comment>
+                <dct:source rdf:resource="https://www.responsa.co.il"/>
+            </cito:Citation>
+        </frac:citation>
+    </frac:Attestation>
+    
+    <!-- Translations -->
+    <vartrans:TranslationSet rdf:about="ts_mahapehá">
+        <rdfs:comment>Sometimes, it may be required to link the translations at the level of lexical senses instead of forms.</rdfs:comment>
+        <vartrans:source rdf:resource="f_mahapehá"/>
+        <vartrans:target rdf:resource="f_révolution"/>
+        <vartrans:target rdf:resource="f_revoliucija"/>
+        <vartrans:target rdf:resource="f_revolution"/>
+        <vartrans:target rdf:resource="f_revoluție"/>
+        <ontolex:reference rdf:resource="d_wict_mul"/>
+        <dct:source rdf:resource="https://fr.wiktionary.org/wiki/r%C3%A9volution"/>
+    </vartrans:TranslationSet>
+
+
+    <!-- Etymologies -->
+    <lemonEty:Etymology rdf:about="e_mahapehá">
+        <llodia:etymon rdf:resource="f_hapah"/>
+        <ontolex:reference rdf:resource="d_wict_mul"/>
+        <dct:source rdf:resource="https://he.wiktionary.org/wiki/%D7%9E%D7%94%D7%A4%D7%9B%D7%94"/>
+    </lemonEty:Etymology>  
+       
+    <!-- Descriptions -->
+    <rdfs:Literal rdf:about="heb_neighb_descr">
+        <rdf:langString xml:lang="eng">The list of top neighbours of the form was computed using gensim word2vec and cosine similarity.</rdf:langString>
+    </rdfs:Literal>
+    
+    <rdfs:Literal rdf:about="heb_embed_descr">
+        <rdf:langString xml:lang="eng">The embedding method used was gensim word2vec, skip-gram.</rdf:langString>
+    </rdfs:Literal>
+    
+    <rdfs:Literal rdf:about="heb_mahapehá_n_assoc_descr">
+        <rdf:langString xml:lang="eng">The lexical sense was associated by human.</rdf:langString>
+    </rdfs:Literal>
+    
+    <rdfs:Literal rdf:about="heb_ca_mahapehá_descr">
+        <rdf:langString xml:lang="eng">Precise citation</rdf:langString>
+    </rdfs:Literal>
+
+    
+    <!-- Lithuanian -->
+    
+    <!-- Resources -->
+    <!-- Dictionary 1: Lietuvių kalbos žodynas -->    
+    <llodia:Dictionary rdf:about="d_liet_lit">
+        <dct:title>Lietuvių kalbos žodynas</dct:title>
+        <dct:language rdf:resource="http://www.lexvo.org/page/iso639-3/lit"/>
+        <dct:publisher>Lietuvių kalbos institutas </dct:publisher>
+        <llodia:publicationDate>2005</llodia:publicationDate>
+        <dbo:country rdf:resource="https://dbpedia.org/page/Lithuania"/>
+        <dct:source rdf:resource="http://www.lkz.lt/"/>
+    </llodia:Dictionary>
+    
+    <!-- Dictionary 2: LIETUVIUZODYNAS --> 
+    <llodia:Dictionary rdf:about="d_LIETZ_lit">
+        <dct:title> LIETUVIUZODYNAS</dct:title>
+        <dct:language rdf:resource="http://www.lexvo.org/page/iso639-3/lit"/>
+        <dct:publisher>lietuviuzodynas.lt </dct:publisher>
+        <llodia:publicationDate>2020</llodia:publicationDate>
+        <dbo:country rdf:resource="https://dbpedia.org/page/Lithuania"/>
+        <dct:source rdf:resource="https://www.lietuviuzodynas.lt/"/>
+    </llodia:Dictionary>
+    
+    <!-- Forms -->
+    <ontolex:Form rdf:about="f_revoliucija">
+        <rdf:value xml:lang="lit">revoliucija</rdf:value>
+        <llodia:translationSet rdf:resource="ts_revoliucija"/>
+        <lemonEty:etymology rdf:resource="e_revoliucija"/>
+    </ontolex:Form>
+    
+    <!-- Lexical entries -->
+    <ontolex:LexicalEntry rdf:about="le_revoliucija">
+        <ontolex:canonicalForm>
+            <ontolex:Form rdf:about="f_revoliucija">
+                <ontolex:writtenRep xml:lang="lit">revoliucija</ontolex:writtenRep>
+            </ontolex:Form>
+        </ontolex:canonicalForm>
+        <lexinfo:partOfSpeech rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#noun"/>
+        <ontolex:sense rdf:resource="d_liet_lit_revoliucija_n_1"/>
+        <ontolex:sense rdf:resource="d_liet_lit_revoliucija_n_2"/>
+    </ontolex:LexicalEntry>
+    
+    <!-- Lexical senses -->
+    <ontolex:LexicalSense rdf:about="d_liet_lit_revoliucija_n_1">
+        <ontolex:reference rdf:resource="d_liet_lit"/>
+        <rdfs:comment xml:lang="eng">Sudden, forcible overthrow of political power, causing fundamental changes in society.</rdfs:comment>
+        <dct:subject rdf:resource="https://dbpedia.org/page/Category:Politics"/>
+        <dct:source rdf:resource="http://www.lkz.lt/?zodis=revoliucija"/>
+        <frac:attestation rdf:resource="da_revoliucija_n_1"/>
+    </ontolex:LexicalSense>
+    
+    <ontolex:LexicalSense rdf:about="d_liet_lit_revoliucija_n_2">
+        <ontolex:reference rdf:resource="d_liet_lit"/>
+        <rdfs:comment xml:lang="eng">Qualitative change of development.</rdfs:comment>
+        <dct:subject rdf:resource="https://dbpedia.org/page/Category:Progress"/>
+        <dct:source rdf:resource="http://www.lkz.lt/?zodis=revoliucija"/>
+        <frac:attestation rdf:resource="da_revoliucija_n_2"/>
+    </ontolex:LexicalSense>
+    
+    <!-- Attestations -->
+    <!-- Dictionary attestations -->
+    <frac:Attestation rdf:about="da_revoliucija_n_1">
+        <ontolex:reference rdf:resource="d_liet_lit"/>
+        <dct:date>1894</dct:date>
+        <frac:citation>
+            <cito:Citation rdf:about="dc_revoliucija_n_1">
+                <dct:title>Lietuviszkai-latviszkai-lenkiszkai-rusiszkas žodynas</dct:title>
+                <rdfs:comment>Page added to the ontology by the contributor.</rdfs:comment>
+                <dct:creator>Mikolo Miežinio</dct:creator>
+                <dbo:country rdf:resource="https://dbpedia.org/page/Lithuania"/>
+                <rdfs:comment>p. 206</rdfs:comment> 
+                <dct:source rdf:resource="http://www.lkz.lt/?zodis=revoliucija"/>
+            </cito:Citation>
+        </frac:citation>
+    </frac:Attestation>
+    
+    <frac:Attestation rdf:about="da_revoliucija_n_2">
+        <ontolex:reference rdf:resource="d_liet_lit"/>
+        <dct:date>1886</dct:date>
+        <frac:citation>
+            <cito:Citation rdf:about="dc_revoliucija_n_2">
+                <dct:title>Lietuviszka gramatika</dct:title>
+                <dct:creator>Mikolo Miežinio</dct:creator>
+                <dbo:country rdf:resource="https://dbpedia.org/page/Lithuania"/>
+                <dct:source rdf:resource="http://www.lkz.lt/?zodis=revoliucija"/>
+            </cito:Citation>
+        </frac:citation>
+    </frac:Attestation>
+    
+    <!-- Translations -->
+    <vartrans:TranslationSet rdf:about="ts_revoliucija">
+        <rdfs:comment>Sometimes, it may be required to link the translations at the level of lexical senses instead of forms.</rdfs:comment>
+        <vartrans:source rdf:resource="f_revoliucija"/>
+        <vartrans:target rdf:resource="f_mahapehá"/>
+        <vartrans:target rdf:resource="f_révolution"/>
+        <vartrans:target rdf:resource="f_revolution"/>
+        <vartrans:target rdf:resource="f_revoluție"/>
+        <ontolex:reference rdf:resource="d_wict_mul"/>
+        <dct:source rdf:resource="https://fr.wiktionary.org/wiki/r%C3%A9volution"/>
+    </vartrans:TranslationSet>
+    
+    <!-- Etymologies -->
+    <lemonEty:Etymology rdf:about="e_revoliucija">
+        <llodia:etymon rdf:resource="f_revolutio"/>
+        <ontolex:reference rdf:resource="d_LIETZ_lit"/>
+        <dct:source rdf:resource="https://www.lietuviuzodynas.lt/terminai/Revoliucija"/>
+    </lemonEty:Etymology>     
+
+    <!-- Latin --> 
+
+    <!-- Time intervals REVOLUTIO (none) -->
+    <llodia:TimeInterval rdf:about="ti_-0450-2005">
+        <dct:start>-0450-01-01</dct:start>
+        <dct:end>2005-12-31</dct:end>
+    </llodia:TimeInterval>
+    
+    <!-- Resources for REVOLUTIO -->
+    <!-- Dictionary: DMLBS --> 
+    <llodia:Dictionary rdf:about="d_dmlbs_lat">
+        <dct:title>Dictionary of Medieval Latin from British Sources</dct:title>
+        <dct:language rdf:resource="http://lexvo.org/id/iso639-3/lat"/>
+        <dct:publisher>British Academy: Oxford</dct:publisher>
+        <llodia:publicationDate>1975-2013</llodia:publicationDate>
+        <dbo:country rdf:resource="https://dbpedia.org/page/United_Kingdom"/>
+        <dct:source rdf:resource="http://www.dmlbs.ox.ac.uk/web/dmlbs.html"/>
+    </llodia:Dictionary>
+    
+    <!-- Dictionary Hub: Logeion --> 
+    <llodia:Dictionary rdf:about="d_logeion_lat">
+        <dct:title>Logeion</dct:title>
+        <dct:language rdf:resource="http://lexvo.org/id/iso639-3/lat"/>
+        <dct:publisher>University of Chicago</dct:publisher>
+        <llodia:publicationDate>2012</llodia:publicationDate> 
+        <dbo:country rdf:resource="https://dbpedia.org/page/United_States"/>
+        <dct:source rdf:resource="https://logeion.uchicago.edu/"/>
+    </llodia:Dictionary>
+    
+    <!-- Corpus: LatinISE corpus -->
+    <llodia:Corpus rdf:about="c_latinise_lat">
+        <dct:title>LatinISE Corpus (version 4)</dct:title>
+        <dct:language rdf:resource="http://lexvo.org/id/iso639-3/lat"/>
+        <dct:publisher>Lexical Computing</dct:publisher> 
+        <llodia:publicationDate>2020</llodia:publicationDate>
+        <dbo:country rdf:resource="https://dbpedia.org/page/United_Kingdom"/>
+        <dct:source rdf:resource="http://hdl.handle.net/11372/LRT-3170"/>
+        <llodia:timeSpan rdf:resource="ti_-0450-2005"/>
+    </llodia:Corpus>    
+    
+    <!-- Forms -->
+    <ontolex:Form rdf:about="f_revolutio">
+        <rdf:value xml:lang="lat">revolutio</rdf:value>
+        <lemonEty:etymology rdf:resource="e_revolutio"/>
+    </ontolex:Form>
+    
+    <!-- Added (Florentina) -->
+    <ontolex:Form rdf:about="f_revolvō">
+        <rdf:value xml:lang="lat">revolvō</rdf:value> <!-- PM: ok, thanks ! -->
+    </ontolex:Form> 
+    
+    <!-- Lexical records -->
+    <!-- Lexical records: REVOLUTIO SENSE 1: roll back -->
+    <llodia:LexicalRecord rdf:about="r_revolutio_1">
+        <llodia:form rdf:resource="f_revolutio"/>
+        <llodia:timeSlice rdf:resource="ti_-0450-2005"/> 
+        <frac:frequency rdf:resource="freq_revolutio_1"/>
+        <frac:embedding rdf:resource="fixedv_revolutio_1"/>
+        <llodia:lexicalConcept rdf:resource="lc_revolutio_1"/>
+    </llodia:LexicalRecord> 
+
+    <!-- Lexical records: REVOLUTIO SENSE 2: revolution, cycle, astronomic sense -->
+    <llodia:LexicalRecord rdf:about="r_revolutio_2">
+        <llodia:form rdf:resource="f_revolutio"/>
+        <llodia:timeSlice rdf:resource="ti_-0450-2005"/> 
+        <frac:frequency rdf:resource="freq_revolutio_2"/>
+        <frac:embedding rdf:resource="fixedv_revolutio_2"/>
+        <llodia:lexicalConcept rdf:resource="lc_revolutio_2"/>
+    </llodia:LexicalRecord> 
+
+    <!-- Lexical entries -->
+    <!-- Lexical entry for REVOLUTIO -->
+    <ontolex:LexicalEntry rdf:about="le_revolutio">
+        <ontolex:canonicalForm>
+            <ontolex:Form rdf:about="f_revolutio">
+                <ontolex:writtenRep xml:lang="lat">revolutio</ontolex:writtenRep>
+            </ontolex:Form>
+        </ontolex:canonicalForm>
+        <lexinfo:partOfSpeech rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#noun"/>
+        <ontolex:sense rdf:resource="d_dmlbs_lat_revolutio_n_1.a"/>
+        <ontolex:sense rdf:resource="d_dmlbs_lat_revolutio_n_3.bc"/>
+    </ontolex:LexicalEntry>    
+ 
+    <!-- Lexical senses -->
+    <!-- Lexical senses for REVOLUTIO1 -->
+    <ontolex:LexicalSense rdf:about="d_dmlbs_lat_revolutio_n_1.a">
+        <ontolex:reference rdf:resource="d_dmlbs_lat"/>
+        <rdfs:comment xml:lang="eng">(Act of) rolling back or aside.</rdfs:comment>
+        <dct:subject rdf:resource="https://dbpedia.org/page/Category:Motion_(physics)"/>
+        <dct:source rdf:resource="https://logeion.uchicago.edu/revolutio"/>
+        <rdfs:comment rdf:resource="lat_revolutio_n_1.a_assoc_descr"/>
+        <frac:attestation rdf:resource="da_revolutio_1"/>
+    </ontolex:LexicalSense>
+
+    <!-- Lexical senses for REVOLUTIO2 -->
+    <ontolex:LexicalSense rdf:about="d_dmlbs_lat_revolutio_n_3.bc">
+        <ontolex:reference rdf:resource="d_dmlbs_lat"/>
+        <rdfs:comment xml:lang="eng">Act of revolving, circular movement, revolution (w. ref. to celestial motion and to cyclical passage of time).</rdfs:comment>
+        <dct:subject rdf:resource="https://dbpedia.org/page/Category:Astronomy"/>
+        <dct:source rdf:resource="https://logeion.uchicago.edu/revolutio"/>
+        <frac:attestation rdf:resource="da_revolutio_2"/>
+        <rdfs:comment rdf:resource="lat_revolutio_n_3_assoc_descr"/>
+    </ontolex:LexicalSense>
+    
+    <!-- Lexical concepts -->
+    <ontolex:LexicalConcept rdf:about="lc_revolutio_1">
+        <ontolex:reference rdf:resource="c_latinise_lat"/>
+        <frac:attestation rdf:resource="ca_revolutio_1"/>
+        <ontolex:lexicalizedSense rdf:resource="d_dmlbs_lat_revolutio_n_1.a"/>
+    </ontolex:LexicalConcept>
+    
+    <ontolex:LexicalConcept rdf:about="lc_revolutio_2">
+        <ontolex:reference rdf:resource="c_latinise_lat"/>
+        <frac:embedding rdf:resource="neighb_revolutio_2"/>
+        <frac:attestation rdf:resource="ca_revolutio_2"/>
+        <ontolex:lexicalizedSense rdf:resource="d_dmlbs_lat_revolutio_n_3.bc"/>
+    </ontolex:LexicalConcept>
+
+    <!-- Observations -->
+    <!-- Corpus observations -->
+    <!-- Observations for REVOLUTIO1 -->
+    <frac:Frequency rdf:about="freq_revolutio_1">
+        <dct:description rdf:resource="freq_descr"/>
+        <rdf:value rdf:datatype="int">2</rdf:value>
+        <frac:observedIn rdf:resource="c_latinise_lat"/>
+        <lexinfo:termType rdf:resource="ontolex:Form"/>
+    </frac:Frequency>
+        
+    <!-- Attestations -->
+    <!-- Dictionary attestations -->
+    <!--   Attestations REVOLUTIO1-->
+    <frac:Attestation rdf:about="da_revolutio_1">
+        <ontolex:reference rdf:resource="d_dmlbs_lat"/> 
+        <dct:date>673</dct:date> <!-- I use the year of birth of the author as a terminus post quem -->
+        <frac:citation>
+            <cito:Citation rdf:about="dc_revolutio_1">
+                <dct:title>In Marci evangelium expositio</dct:title>
+                <dct:creator>Bede the Venerable [673–735]</dct:creator>
+                <dbo:country rdf:resource="https://dbpedia.org/page/England"/>
+                <rdf:value rdf:datatype="xsd:string">quomodo lapis per angelum revolutus sit Matheus ‥ exponit. sed revolutio lapidis mystice reserationem sacramentorum Christi quae velamine litterae legalis tegebantur insinuat.
+                </rdf:value>
+                <rdfs:comment>column 295 of Patrologiae cursus completus. Series Latina. Book XCII</rdfs:comment>
+                <dct:source rdf:resource="https://logeion.uchicago.edu/revolutio"/>
+                <rdfs:comment>This sense belongs to the DMLBS dictionary, which was accessed via the online platform Logeion</rdfs:comment>
+            </cito:Citation>
+        </frac:citation>
+    </frac:Attestation>
+    
+    <!-- Corpus attestations -->
+    <frac:Attestation rdf:about="ca_revolutio_1"> <!--corpus attestation -->
+        <ontolex:reference rdf:resource="c_latinise_lat"/>
+        <dct:date>1110</dct:date>
+        <frac:citation>
+            <cito:Citation rdf:about="cc_revolutio_1">
+                <dct:title>Problemata Heloissae cum Petri Abaelardi solutionibus</dct:title>
+                <dct:creator>Petrus Abaelardus</dct:creator>
+                <dbo:country rdf:resource="http://dbpedia.org/resource/France"/>
+                <rdf:value rdf:datatype="xsd:string">Quod cum minime reperisset , iterum ad monumentum orto iam sole cum aliis uenit, et tunc reuolutio lapidis facta est , quamuis Ioannes hanc reuolutionem quasi prius factam per anticipationem dicat a Maria uisam fuisse.
+                </rdf:value>
+                <dct:source rdf:resource="http://hdl.handle.net/11372/LRT-3170"/>
+            </cito:Citation>
+        </frac:citation>
+    </frac:Attestation>
+
+    <!-- Observations -->
+    <!-- Corpus observations -->
+    <!-- Observations for REVOLUTIO2 -->
+    <frac:Frequency rdf:about="freq_revolutio_2">
+        <dct:description rdf:resource="freq_descr"/>
+        <rdf:value rdf:datatype="int">19</rdf:value>
+        <frac:observedIn rdf:resource="c_latinise_lat"/>
+        <lexinfo:termType rdf:resource="ontolex:Form"/>
+    </frac:Frequency>
+    
+    <frac:Similarity rdf:about="neighb_revolutio_2">
+        <dct:description rdf:resource="lat_neighb_descr"/>
+        <rdf:value rdf:datatype="xsd:string">0.7996742725372314, 0.7991682887077332, 0.789879560470581, 0.7791609168052673, 0.7735862135887146, 0.7699796557426453, 0.7656434178352356, 0.7656427621841431, 0.7598220705986023, 0.7570433020591736</rdf:value>
+        <llodia:similarity>
+            <rdf:Seq>
+                <rdf:li>vergiliarum</rdf:li>
+                <rdf:li>solstitialis</rdf:li>
+                <rdf:li>autumnale</rdf:li>
+                <rdf:li>solstitium</rdf:li>
+                <rdf:li>arcticum</rdf:li>
+                <rdf:li>tricesima</rdf:li>
+                <rdf:li>cente(n)simus</rdf:li>
+                <rdf:li>semicirculus</rdf:li>
+                <rdf:li>sexdecim</rdf:li>
+                <rdf:li>octobri</rdf:li>
+            </rdf:Seq>
+        </llodia:similarity>
+        <frac:observedIn rdf:resource="c_latinise_lat"/>
+        <lexinfo:termType rdf:resource="ontolex:Form"/>
+    </frac:Similarity>
+    
+    <frac:FixedSizeVector rdf:about="fixedv_revolutio_1">
+        <dct:description rdf:resource="lat_embed_descr"/>
+        <dct:extent rdf:datatype="xsd:int">100</dct:extent>
+        <rdf:value rdf:datatype="xsd:string">1.60779983e-01, 1.18224034e-02, 6.21160306e-02, -1.02524436e-03, -4.40305173e-02, -1.82687789e-01, 1.77303359e-01, 2.52508819e-01, -3.91726904e-02, 8.49229321e-02, 3.30560934e-03, -1.58899739e-01, -1.43981442e-01, -1.18394516e-01, -1.41758859e-01, -1.30703703e-01, 1.18982293e-01, 3.50958258e-02, 5.69487214e-02, -3.96880686e-01, 1.50826603e-01, -1.07418202e-01, 9.67014134e-02, 2.03666553e-01, -4.80778441e-02, -9.91311669e-02, 1.05628274e-01, -3.56726833e-02, -4.06277478e-01, -4.95805480e-02, 2.73355916e-02, 7.96075314e-02, -1.58456206e-01, -1.44693647e-02, -8.92808940e-03, -9.15542617e-03, -1.91997867e-02, -3.44042301e-01, 1.01554818e-01, -8.76438245e-02, 2.32398082e-02, 9.10687223e-02, 1.95166767e-01, -6.48055375e-02, -2.38438981e-04, 1.35667413e-01, 8.42167810e-02, -5.70183806e-02, 7.55100250e-02, 7.78512890e-03, 2.22735740e-02, -9.87542421e-02, -9.68237668e-02, -7.39431232e-02, 1.50537029e-01, 4.13652025e-02, 9.57828239e-02, 8.54517967e-02, -1.35578692e-01, 1.00986630e-01, 5.58156855e-02, 3.24546434e-02, -9.75097809e-03, -7.50211403e-02, -1.55559406e-02, 1.28786936e-01, -5.31992428e-02, 6.58656806e-02, -9.20233428e-02, 3.83753121e-01, -1.10491626e-01, -6.07881770e-02, 3.70975107e-01, 5.16401306e-02, 1.67494625e-01, 3.65734659e-02, 3.05008322e-01, -1.22938827e-01, -1.31034255e-01, 8.61316919e-02, -1.16907030e-01, 2.46466696e-01, -1.99297830e-01, -1.18809529e-01, -8.30794200e-02, -2.02805296e-01, -3.04889362e-02, 3.25711630e-02, 9.68219154e-03, 7.37506971e-02, 2.94827491e-01, 2.19358012e-01, 1.05223328e-01, 1.60598569e-02, 1.47943571e-01, 6.96885586e-02, 2.53760427e-01, -4.50455882e-02, 1.02239594e-01, -1.51806071e-01</rdf:value> 
+        <frac:observedIn rdf:resource="c_latinise_lat"/>
+    </frac:FixedSizeVector>
+        
+    <!-- Attestations -->
+    <!-- Dictionary attestations -->
+    <!-- Attestations REVOLUTIO2-->
+    <frac:Attestation rdf:about="da_revolutio_2"> 
+        <ontolex:reference rdf:resource="d_dmlbs_lat"/>
+        <dct:date>1157</dct:date> <!-- terminus post quem -->
+        <frac:citation>
+            <cito:Citation rdf:about="dc_revolutio_2">
+                <dct:title>Suppletio defectuum, Carmina minora.</dct:title>
+                <dct:creator>Alexander Neckam [1157–1217]</dct:creator>
+                <dbo:country rdf:resource="https://dbpedia.org/page/England"/>
+                <rdf:value rdf:datatype="xsd:string">una giracione superet numerum dierum anni revolutio firmamenti</rdf:value>
+                <rdfs:comment>In Corpus Christianorum, continuatio mediaevalis. Vol. 221, 154</rdfs:comment>
+                <dct:source rdf:resource="https://logeion.uchicago.edu/revolutio"/>
+                <rdfs:comment>This sense belongs to the DMLBS dictionary, which was accessed via the online platform Logeion</rdfs:comment>
+            </cito:Citation>
+        </frac:citation>
+    </frac:Attestation>
+    
+    <!-- Corpus attestations -->
+    <frac:Attestation rdf:about="ca_revolutio_2"> 
+        <ontolex:reference rdf:resource="c_latinise_lat"/>
+        <dct:date>1110</dct:date>
+        <frac:citation>
+            <cito:Citation rdf:about="cc_revolutio_2">
+                <dct:title>Sermones</dct:title>
+                <dct:creator>Petrus Abaelardus</dct:creator>
+                <dbo:country rdf:resource="http://dbpedia.org/resource/France"/>
+                <rdf:value rdf:datatype="xsd:string">Si ergo Herodes ab eo quod didicit a magis stellam apparuisse biennium computauerit, plus quam integrum annum depressit de tempore, cum uidelicet constet hanc occasionem nequaquam peragi, nisi post anni reuolutionem quam nos hodie huius interfectionis passionem recolimus.
+                </rdf:value>
+                <dct:source rdf:resource="http://hdl.handle.net/11372/LRT-3170"/>
+            </cito:Citation>
+        </frac:citation>
+    </frac:Attestation>
+    
+    <!-- Etymologies -->
+    <!-- Etymology REVOLUTIO -->
+    <lemonEty:Etymology rdf:about="e_revolutio">
+        <llodia:etymon rdf:resource="f_revolvō"/>
+        <ontolex:reference rdf:resource="d_wict_mul"/>
+        <dct:source rdf:resource="https://en.wiktionary.org/wiki/revolutio"/>
+    </lemonEty:Etymology>  
+    
+    <!-- Descriptions -->
+    <rdfs:Literal rdf:about="lat_neighb_descr">
+        <rdf:langString xml:lang="eng">The list of top neighbours of the form was computed using fasttext, with 100 dimensions, context window of 5, and minimum frequency count of 5. Measure used: cosine similarity.</rdf:langString>
+    </rdfs:Literal>
+    
+    <rdfs:Literal rdf:about="lat_embed_descr">
+        <rdf:langString xml:lang="eng">The embedding method used was gensim FastText, method skip-gram.</rdf:langString>
+    </rdfs:Literal>
+ 
+ 
+    <!-- Romanian -->
+    
+    <!-- Dictionary 1: dexonline.ro / dex.ro -->
+    <llodia:Dictionary rdf:about="d_dex_ron">
+        <dct:title>dexonline Dicționare ale limbii române</dct:title>
+        <dct:language rdf:resource="http://www.lexvo.org/page/iso639-3/ron"/>
+        <dct:publisher>dexonline</dct:publisher>
+        <llodia:publicationDate>2004</llodia:publicationDate>
+        <dbo:country rdf:resource="https://dbpedia.org/page/Romania"/>
+        <dct:source rdf:resource="https://dexonline.ro/"/>
+    </llodia:Dictionary>
+    
+    <!-- Dictionary 2: Dicționarul tezaur al limbii române în format electronic (eDTLR) -->
+    <llodia:Dictionary rdf:about="d_edtlr_ron">
+        <dct:title>Dicționarul tezaur al limbii române în format electronic (eDTLR)</dct:title>
+        <dct:language rdf:resource="http://www.lexvo.org/page/iso639-3/ron"/>
+        <dct:publisher>Academia Româna</dct:publisher>
+        <llodia:publicationDate>2011</llodia:publicationDate>
+        <dbo:country rdf:resource="https://dbpedia.org/page/Romania"/>
+        <!--<dct:source rdf:resource="http://www.dictionaryportal.eu/sco/161/"/>--><!-- Link currently not working. -->
+    </llodia:Dictionary>
+
+    
+    <!-- Forms -->
+    <ontolex:Form rdf:about="f_revoluție">
+        <rdf:value xml:lang="ron">revoluție</rdf:value>
+        <llodia:translationSet rdf:resource="ts_revoluție"/>
+        <lemonEty:etymology rdf:resource="e_revoluție"/>
+    </ontolex:Form>
+    
+    <ontolex:Form rdf:about="f_Revolution">
+        <rdf:value xml:lang="deu">Revolution</rdf:value>
+    </ontolex:Form>
+
+    <!-- Lexical entries -->
+    <ontolex:LexicalEntry rdf:about="le_revoluție">
+        <ontolex:canonicalForm>
+            <ontolex:Form rdf:about="f_revoluție">
+                <ontolex:writtenRep xml:lang="ron">revoluție</ontolex:writtenRep>
+            </ontolex:Form>
+        </ontolex:canonicalForm>
+        <lexinfo:partOfSpeech rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#noun"/>
+        <ontolex:sense rdf:resource="d_dex_ron_revoluție_n_1"/>
+        <ontolex:sense rdf:resource="d_dex_ron_revoluție_n_2"/>
+        <ontolex:sense rdf:resource="d_dex_ron_revoluție_n_3"/>
+        <ontolex:sense rdf:resource="d_dex_ron_revoluție_n_4"/>
+        <ontolex:sense rdf:resource="d_dex_ron_revoluție_n_5"/>
+    </ontolex:LexicalEntry>
+
+    <!-- Lexical senses -->
+    <ontolex:LexicalSense rdf:about="d_dex_ron_revoluție_n_1">
+        <ontolex:reference rdf:resource="d_dex_ron"/>
+        <rdfs:comment xml:lang="eng">Sudden, forcible overthrow of political power, causing fundamental changes in society.</rdfs:comment>
+        <dct:subject rdf:resource="https://dbpedia.org/page/Category:Politics"/>
+        <dct:source rdf:resource="https://dexonline.ro/definitie/revolu%C8%9Bie"/> 
+        <frac:attestation rdf:resource="da_revoluție_n_1"/>
+    </ontolex:LexicalSense>
+    
+    <ontolex:LexicalSense rdf:about="d_dex_ron_revoluție_n_2">
+        <ontolex:reference rdf:resource="d_dex_ron"/>
+        <rdfs:comment xml:lang="eng">Qualitative change of development.</rdfs:comment>
+        <dct:subject rdf:resource="https://dbpedia.org/page/Category:Progress"/>
+        <dct:source rdf:resource="https://dexonline.ro/definitie/revolu%C8%9Bie"/> 
+    </ontolex:LexicalSense>
+
+    <ontolex:LexicalSense rdf:about="d_dex_ron_revoluție_n_3">
+        <ontolex:reference rdf:resource="d_dex_ron"/>
+        <rdfs:comment xml:lang="eng">Circular motion of a body around its axis.</rdfs:comment>
+        <dct:subject rdf:resource="https://dbpedia.org/page/Category:Mechanics"/>
+        <dct:source rdf:resource="https://dexonline.ro/definitie/revolu%C8%9Bie"/> 
+    </ontolex:LexicalSense>
+    
+    <ontolex:LexicalSense rdf:about="d_dex_ron_revoluție_n_4">
+        <ontolex:reference rdf:resource="d_dex_ron"/>
+        <rdfs:comment xml:lang="eng">Motion of a geometric form around an axis.</rdfs:comment>
+        <dct:subject rdf:resource="https://dbpedia.org/page/Category:Geometry"/>
+        <dct:source rdf:resource="https://dexonline.ro/definitie/revolu%C8%9Bie"/> 
+    </ontolex:LexicalSense>
+    
+    <ontolex:LexicalSense rdf:about="d_dex_ron_revoluție_n_5">
+        <ontolex:reference rdf:resource="d_dex_ron"/>
+        <rdfs:comment xml:lang="eng">Natural phenomena changing the physical characteristics of the Earth.</rdfs:comment>
+        <dct:subject rdf:resource="https://dbpedia.org/page/Category:Geophysics"/>
+        <dct:source rdf:resource="https://dexonline.ro/definitie/revolu%C8%9Bie"/> 
+    </ontolex:LexicalSense>
+    
+    <!-- Attestations -->
+    <!-- Dictionary attestations -->
+    <frac:Attestation rdf:about="da_revoluție_n_1">
+        <ontolex:reference rdf:resource="d_edtlr_ron"/>
+        <dct:date>1821</dct:date>
+        <frac:citation>
+            <cito:Citation rdf:about="dc_revoluție_n_1">
+                <dct:title>MOLNAR, I. 415/15</dct:title>
+                <dct:creator>MOLNAR</dct:creator>
+                <dbo:country rdf:resource="https://dbpedia.org/page/Romania"/>
+                <rdfs:comment>p. 415/15</rdfs:comment>
+                <!-- <dct:source rdf:resource=""/> --> <!-- To be added. -->
+            </cito:Citation>
+        </frac:citation>
+    </frac:Attestation>
+
+    <!-- Translations -->
+    <vartrans:TranslationSet rdf:about="ts_revoluție">
+        <rdfs:comment>Sometimes, it may be required to link the translations at the level of lexical senses instead of forms.</rdfs:comment>
+        <vartrans:source rdf:resource="f_revoluție"/>
+        <vartrans:target rdf:resource="f_mahapehá"/>
+        <vartrans:target rdf:resource="f_révolution"/>
+        <vartrans:target rdf:resource="f_revolution"/>
+        <vartrans:target rdf:resource="f_revoliucija"/>
+        <ontolex:reference rdf:resource="d_wict_mul"/>
+        <dct:source rdf:resource="https://fr.wiktionary.org/wiki/r%C3%A9volution"/>
+    </vartrans:TranslationSet>
+    
+    <!-- Etymologies -->
+    <lemonEty:Etymology rdf:about="e_revoluție">
+        <llodia:etymon rdf:resource="f_revolutio"/>
+        <llodia:etymon rdf:resource="f_révolution"/>
+        <llodia:etymon rdf:resource="f_Revolution"/>
+        <ontolex:reference rdf:resource="d_dex_ron"/>
+        <dct:source rdf:resource="https://dexonline.ro/definitie/revolu%C8%9Bie"/>
+    </lemonEty:Etymology>
+
+</rdf:RDF>
+
