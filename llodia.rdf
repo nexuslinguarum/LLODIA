@@ -14,7 +14,6 @@
     xmlns:frac="http://www.w3.org/ns/lemon/frac#"
     xmlns:cito="http://purl.org/spar/cito#"
     xmlns:void="http://rdfs.org/ns/void#"
-    xmlns:time="http://www.w3.org/2006/time#"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:vartrans="http://www.w3.org/ns/lemon/vartrans#"
@@ -60,14 +59,6 @@
         <dc:description>A collection of documents that covers a certain topic and period of time.</dc:description>    
     </owl:Class>
     
-    <owl:Class rdf:about="https://github.com/nexuslinguarum/llodia/TimeInterval">
-        <rdfs:subClassOf rdf:resource="http://purl.org/dc/terms/Period"/>
-        <rdfs:isDefinedBy rdf:resource="https://github.com/nexuslinguarum/llodia"/>
-        <dc:description>A class that defines a time interval. It may also be an open interval or include non-numeric encoding referring, for instance, to a named era.</dc:description>
-        <owl:DatatypeProperty rdf:resource="dct:start"/>
-        <owl:DatatypeProperty rdf:resource="dct:end"/>
-    </owl:Class>
-    
     
     <!-- Properties -->
     <!-- DatatypeProperty -->
@@ -82,7 +73,7 @@
         <rdfs:subPropertyOf rdf:resource="dct:coverage"/>
         <rdfs:isDefinedBy rdf:resource="https://github.com/nexuslinguarum/llodia"/>
         <dc:description>A property that defines the time span of a resource.</dc:description>
-        <rdfs:range rdf:resource="https://github.com/nexuslinguarum/llodia/TimeInterval"/>
+        <rdfs:range rdf:resource="http://purl.org/dc/terms/Period"/>
     </owl:ObjectProperty>
     
     <owl:ObjectProperty rdf:about="https://github.com/nexuslinguarum/llodia/timeSlice">
@@ -90,7 +81,7 @@
         <rdfs:isDefinedBy rdf:resource="https://github.com/nexuslinguarum/llodia"/>
         <dc:description>A property that relates a record with the time slice in which a specific linguistic event was observed.</dc:description>
         <rdfs:domain rdf:resource="https://github.com/nexuslinguarum/llodia/LexicalRecord"/>
-        <rdfs:range rdf:resource="https://github.com/nexuslinguarum/llodia/TimeInterval"/>
+        <rdfs:range rdf:resource="http://purl.org/dc/terms/Period"/>
         <owl:inverseOf rdf:resource="https://github.com/nexuslinguarum/llodia/isTimeSliceOf"/>
     </owl:ObjectProperty>
     
@@ -98,7 +89,7 @@
         <rdfs:subPropertyOf rdf:resource="dct:coverage"/>
         <rdfs:isDefinedBy rdf:resource="https://github.com/nexuslinguarum/llodia"/>
         <dc:description>A property that relates a time slice when a specific linguistic event was observed with a record.</dc:description>
-        <rdfs:domain rdf:resource="https://github.com/nexuslinguarum/llodia/TimeInterval"/>
+        <rdfs:domain rdf:resource="http://purl.org/dc/terms/Period"/>
         <rdfs:range rdf:resource="https://github.com/nexuslinguarum/llodia/LexicalRecord"/>
         <owl:inverseOf rdf:resource="https://github.com/nexuslinguarum/llodia/timeSlice"/>
     </owl:ObjectProperty>
@@ -237,30 +228,30 @@
     <!-- French -->
     
     <!-- Time intervals -->
-    <llodia:TimeInterval rdf:about="ti_1690-1918">
+    <dct:Period rdf:about="ti_1690-1918">
         <dct:start>1690-01-01</dct:start>
         <dct:end>1918-12-31</dct:end>
-    </llodia:TimeInterval>
+    </dct:Period>
     
-    <llodia:TimeInterval rdf:about="ti_1690-1794">
+    <dct:Period rdf:about="ti_1690-1794">
         <dct:start>1690-01-01</dct:start>
         <dct:end>1794-12-31</dct:end>
-    </llodia:TimeInterval>
+    </dct:Period>
     
-    <llodia:TimeInterval rdf:about="ti_1831-1866">
+    <dct:Period rdf:about="ti_1831-1866">
         <dct:start>1831-01-01</dct:start>
         <dct:end>1866-12-31</dct:end>
-    </llodia:TimeInterval>
+    </dct:Period>
     
-    <llodia:TimeInterval rdf:about="ti_1867-1889">
+    <dct:Period rdf:about="ti_1867-1889">
         <dct:start>1867-01-01</dct:start>
         <dct:end>1889-12-31</dct:end>
-    </llodia:TimeInterval>
+    </dct:Period>
     
-    <llodia:TimeInterval rdf:about="ti_1890-1918">
+    <dct:Period rdf:about="ti_1890-1918">
         <dct:start>1890-01-01</dct:start>
         <dct:end>1918-12-31</dct:end>
-    </llodia:TimeInterval>
+    </dct:Period>
     
     <!-- Resources -->
     <!-- Dictionary 1: Portail lexical CNRTL -->
@@ -782,25 +773,30 @@
     <!-- Hebrew -->
     
     <!-- Time intervals -->
-    <llodia:TimeInterval rdf:about="ti_1001-1500">
+    <dct:Period rdf:about="ti_1001-2010">
+        <dct:start>1001-01-01</dct:start>
+        <dct:end>2010-12-31</dct:end>
+    </dct:Period>
+    
+    <dct:Period rdf:about="ti_1001-1500">
         <dct:start>1001-01-01</dct:start>
         <dct:end>1500-12-31</dct:end>
-    </llodia:TimeInterval>
+    </dct:Period>
     
-    <llodia:TimeInterval rdf:about="ti_1501-1600">
+    <dct:Period rdf:about="ti_1501-1600">
         <dct:start>1501-01-01</dct:start>
         <dct:end>1600-12-31</dct:end>
-    </llodia:TimeInterval>
+    </dct:Period>
 	
-    <llodia:TimeInterval rdf:about="ti_1601-1900">
+    <dct:Period rdf:about="ti_1601-1900">
         <dct:start>1601-01-01</dct:start>
         <dct:end>1900-12-31</dct:end>
-    </llodia:TimeInterval>
+    </dct:Period>
 	
-    <llodia:TimeInterval rdf:about="ti_1901-2010">
+    <dct:Period rdf:about="ti_1901-2010">
         <dct:start>1901-01-01</dct:start>
         <dct:end>2010-12-31</dct:end>
-    </llodia:TimeInterval>
+    </dct:Period>
     
     <!-- Resources -->
     <!-- Dictionary 1: Milog -->
@@ -1153,7 +1149,6 @@
         <dct:source rdf:resource="https://fr.wiktionary.org/wiki/r%C3%A9volution"/>
     </vartrans:TranslationSet>
 
-
     <!-- Etymologies -->
     <lemonEty:Etymology rdf:about="e_mahapehá">
         <llodia:etymon rdf:resource="f_hapah"/>
@@ -1290,10 +1285,10 @@
     <!-- Latin --> 
 
     <!-- Time intervals REVOLUTIO (none) -->
-    <llodia:TimeInterval rdf:about="ti_-0450-2005">
+    <dct:Period rdf:about="ti_-0450-2005">
         <dct:start>-0450-01-01</dct:start>
         <dct:end>2005-12-31</dct:end>
-    </llodia:TimeInterval>
+    </dct:Period>
     
     <!-- Resources for REVOLUTIO -->
     <!-- Dictionary: DMLBS --> 
@@ -1564,7 +1559,6 @@
         <!--<dct:source rdf:resource="http://www.dictionaryportal.eu/sco/161/"/>--><!-- Link currently not working. -->
     </llodia:Dictionary>
 
-    
     <!-- Forms -->
     <ontolex:Form rdf:about="f_revoluție">
         <rdf:value xml:lang="ron">revoluție</rdf:value>
